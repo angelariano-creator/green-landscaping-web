@@ -42,68 +42,79 @@ export default function Home() {
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>
       
-      {/* 1. NAVBAR CORREGIDO */}
+      {/* 1. NAVBAR TOTALMENTE CORREGIDO */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
         minHeight: '80px', 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        padding: '10px 20px', 
+        padding: '15px clamp(10px, 4vw, 40px)', // Padding lateral dinámico
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
         flexWrap: 'wrap', 
-        gap: '15px'
+        gap: '20px'
       }}>
         
-        {/* LOGO AREA - Centrado automático en móvil */}
+        {/* AREA DEL LOGO - Ajustada para Web y Móvil */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
           gap: '12px', 
           cursor: 'pointer',
-          flex: '1',
-          minWidth: '250px',
-          justifyContent: 'flex-start'
+          flex: '1 1 auto', // Permite crecer y encogerse
+          justifyContent: 'flex-start',
+          minWidth: '200px'
         }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
-            style={{ height: '60px', width: 'auto', objectFit: 'contain' }} 
+            style={{ 
+              height: 'clamp(50px, 8vw, 75px)', // Crece en web, tamaño ideal en móvil
+              width: 'auto', 
+              objectFit: 'contain' 
+            }} 
           />
           <img 
             src="/Letralogo.png" 
             alt="Green Landscaping" 
-            style={{ height: '50px', width: 'auto', filter: 'brightness(0.1)', objectFit: 'contain' }} 
+            style={{ 
+              height: 'clamp(40px, 6vw, 60px)', 
+              width: 'auto', 
+              filter: 'brightness(0.1)', 
+              objectFit: 'contain' 
+            }} 
           />
         </div>
 
-        {/* CONTACT & ACTION */}
+        {/* CONTACTO Y ACCIÓN - Se auto-centra en móvil */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '20px', 
-          flexWrap: 'wrap',
+          gap: 'clamp(15px, 3vw, 30px)', 
+          flexWrap: 'nowrap', // Evita que el número y el botón se separen feo
           justifyContent: 'flex-end',
-          flex: '1'
+          flex: '1 1 auto'
         }}>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: '10px', color: '#6B7280', fontWeight: 'bold' }}>FREE ESTIMATE:</div>
-            <div style={{ fontSize: '14px', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
+          <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 'clamp(9px, 2vw, 11px)', color: '#6B7280', fontWeight: 'bold' }}>FREE ESTIMATE:</div>
+            <div style={{ fontSize: 'clamp(13px, 2.5vw, 16px)', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
           </div>
           <button 
             onClick={() => scrollToSection('estimate-section')}
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: '10px 20px', 
+              padding: 'clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px)', 
               borderRadius: '8px', 
               fontWeight: '900', 
-              fontSize: '13px',
+              fontSize: 'clamp(11px, 2vw, 14px)',
               border: 'none',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              boxShadow: '0 4px 10px rgba(255,183,3,0.3)',
+              whiteSpace: 'nowrap'
             }}
           >
             BOOK NOW
@@ -112,18 +123,18 @@ export default function Home() {
       </nav>
 
       {/* 2. HERO SECTION */}
-      <section style={{ padding: '20px', backgroundColor: '#F9FAFB' }}>
+      <section style={{ padding: 'clamp(10px, 3vw, 20px)', backgroundColor: '#F9FAFB' }}>
         <div style={{ 
           position: 'relative', 
           maxWidth: '1400px', 
           margin: '0 auto', 
-          minHeight: '60vh', 
-          borderRadius: '40px', 
+          minHeight: 'clamp(50vh, 65vh, 80vh)', 
+          borderRadius: 'clamp(20px, 5vw, 40px)', 
           overflow: 'hidden', 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'center',
-          border: '8px solid #FFFFFF',
+          border: 'clamp(4px, 1vw, 8px) solid #FFFFFF',
           boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
         }}>
           <img 
@@ -144,7 +155,7 @@ export default function Home() {
               Where <span style={{ color: '#FFB703' }}>Memories</span> Grow <br/>
               and Lawns Flourish.
             </h1>
-            <p style={{ color: '#FFFFFF', fontSize: '18px', marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px' }}>
+            <p style={{ color: '#FFFFFF', fontSize: 'clamp(14px, 3vw, 18px)', marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px' }}>
               Your home is your sanctuary. We provide the expert care your landscape deserves.
             </p>
             
@@ -173,20 +184,20 @@ export default function Home() {
       </section>
 
       {/* 3. TRUST BAR */}
-      <div style={{ textAlign: 'center', padding: '30px', color: '#6B7280', fontSize: '14px', letterSpacing: '1px', fontWeight: 'bold' }}>
+      <div style={{ textAlign: 'center', padding: '25px 10px', color: '#6B7280', fontSize: 'clamp(11px, 2vw, 14px)', letterSpacing: '1px', fontWeight: 'bold' }}>
         <span style={{ color: '#FFB703' }}>★★★★★</span> 5-STAR GOOGLE RATING • PROFESSIONAL IRRIGATION & SOD
       </div>
 
-      {/* 4. GET ESTIMATE SECTION CORREGIDO */}
+      {/* 4. GET ESTIMATE SECTION */}
       <section id="estimate-section" style={{ padding: 'clamp(40px, 8vw, 80px) 20px', backgroundColor: '#FFFFFF' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
           
           <div style={{ flex: '1', minWidth: '300px' }}>
-            <h2 style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: '900', color: '#0B2219', lineHeight: '1.2', marginBottom: '25px' }}>
+            <h2 style={{ fontSize: 'clamp(30px, 5vw, 48px)', fontWeight: '900', color: '#0B2219', lineHeight: '1.2', marginBottom: '25px' }}>
               Ready to Transform <br/> 
               <span style={{ color: '#FFB703' }}>Your Landscape?</span>
             </h2>
-            <p style={{ fontSize: '18px', color: '#4B5563', lineHeight: '1.6', marginBottom: '30px' }}>
+            <p style={{ fontSize: '17px', color: '#4B5563', lineHeight: '1.6', marginBottom: '30px' }}>
               Tell us about your project. Our experts are ready to help.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
@@ -232,13 +243,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. PROJECTS SECTION CORREGIDO */}
+      {/* 5. PROJECTS SECTION */}
       <section id="projects-section" style={{ padding: 'clamp(40px, 8vw, 100px) 20px', backgroundColor: '#F3F4F6', borderRadius: '60px 60px 0 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ textAlign: 'center', fontSize: 'clamp(32px, 5vw, 42px)', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Our Latest Work</h2>
-          <p style={{ textAlign: 'center', color: '#6B7280', marginBottom: '40px', fontSize: '18px' }}>Quality landscaping that speaks for itself.</p>
+          <h2 style={{ textAlign: 'center', fontSize: 'clamp(30px, 5vw, 42px)', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Our Latest Work</h2>
+          <p style={{ textAlign: 'center', color: '#6B7280', marginBottom: '40px', fontSize: '17px' }}>Quality landscaping that speaks for itself.</p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px' }}>
               <ProjectCard title="Sod Installation" images={['/Sod1.JPG', '/Sod2.JPG', '/Sod3.JPG', '/Sod4.JPG']} />
               <ProjectCard title="Irrigation Systems" images={['/Irrigation1.JPG', '/Irrigation2.JPG', '/Irrigation3.JPG', '/Irrigation4.JPG']} />
               <ProjectCard title="Landscape Design" images={['/Land1.JPG', '/Land2.JPG', '/Imagen2.JPG', '/Land3.JPG']} />
@@ -258,7 +269,7 @@ const inputStyle = {
   fontSize: '16px',
   outline: 'none',
   width: '100%',
-  boxSizing: 'border-box', // Importante para que no se desborde
+  boxSizing: 'border-box',
   backgroundColor: '#FFFFFF',
   fontFamily: 'sans-serif'
 };
@@ -276,7 +287,7 @@ const submitButtonStyle = {
 };
 
 const cardStyle = {
-  height: '350px',
+  height: 'clamp(300px, 40vh, 400px)',
   backgroundColor: '#FFFFFF',
   borderRadius: '30px',
   overflow: 'hidden',
