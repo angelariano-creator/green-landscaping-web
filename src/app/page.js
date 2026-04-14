@@ -69,7 +69,7 @@ export default function Home() {
             }}
           >
             <img 
-              src="/Logocompleto.PNG" 
+              src="/Logocompleto.png" 
               alt="Green Landscaping and Irrigation LLC" 
               style={{ 
                 height: 'auto',
