@@ -38,10 +38,10 @@ export default function Home() {
   };
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
-      {/* 1. NAVBAR - LOGO GRANDE Y BOTÓN DE LLAMADA */}
+      {/* 1. NAVBAR CORREGIDO - LOGO GRANDE Y RESPONSIVO */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
-        minHeight: '110px', // Más altura para acomodar un logo grande
+        minHeight: '90px', 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
@@ -50,22 +50,24 @@ export default function Home() {
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 25px rgba(0,0,0,0.07)',
-        flexWrap: 'nowrap' // Evita que se rompa en dos filas
+        flexWrap: 'wrap', // ESTO es la clave: permite que los elementos bajen si no hay espacio
+        gap: '15px'
       }}>
         
-        {/* AREA DEL LOGO - Escalado visualmente impactante */}
+        {/* AREA DEL LOGO - Escalado agresivo y alineación a la izquierda */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(10px, 3vw, 20px)', 
+          gap: '15px', 
           cursor: 'pointer',
-          flex: '0 1 auto' 
+          flex: '1 1 auto', // Permite que ocupe todo el ancho disponible
+          justifyContent: 'flex-start'
         }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
             style={{ 
-              height: 'clamp(80px, 15vw, 110px)', // Aumentado para visibilidad total
+              height: 'clamp(70px, 12vw, 95px)', // Mucho más grande que antes
               width: 'auto', 
               objectFit: 'contain' 
             }} 
@@ -74,7 +76,7 @@ export default function Home() {
             src="/Letralogo.png" 
             alt="Green Landscaping" 
             style={{ 
-              height: 'clamp(55px, 10vw, 75px)', // Texto de marca mucho más legible
+              height: 'clamp(50px, 8vw, 70px)', // Texto de marca legible
               width: 'auto', 
               filter: 'brightness(0.1)', 
               objectFit: 'contain' 
@@ -82,38 +84,48 @@ export default function Home() {
           />
         </div>
 
-        {/* SECCIÓN DE ACCIÓN (TELÉFONO + BOTÓN LLAMADA) */}
+        {/* INFORMACIÓN DE CONTACTO - Se auto-centra en móvil */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(10px, 3vw, 30px)',
-          flexShrink: 0
+          gap: 'clamp(15px, 4vw, 35px)', 
+          flexWrap: 'nowrap',
+          justifyContent: 'center', // Centra el contacto cuando baja en móvil
+          flex: '1' // Asegura buen espacio
         }}>
-          {/* Texto de contacto visible solo en pantallas medianas/grandes para dar espacio al logo en móvil */}
-          <div style={{ 
-            textAlign: 'right', 
-            whiteSpace: 'nowrap',
-            display: 'block' // Puedes usar media queries para ocultar el texto pequeño en móviles muy chicos si el logo choca
-          }}>
-            <div style={{ fontSize: '11px', color: '#6B7280', fontWeight: 'bold' }}>FREE ESTIMATE:</div>
-            <div style={{ fontSize: 'clamp(14px, 2vw, 18px)', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ 
+              fontSize: 'clamp(9px, 1.8vw, 12px)', 
+              color: '#6B7280', 
+              fontWeight: 'bold', 
+              margin: 0, 
+              textTransform: 'uppercase' 
+            }}>
+              Free Estimate:
+            </p>
+            <p style={{ 
+              fontSize: 'clamp(14px, 2.5vw, 19px)', 
+              color: '#0B2219', 
+              fontWeight: '900', 
+              margin: 0 
+            }}>
+              +1 (762) 244-0708
+            </p>
           </div>
           
-          {/* BOTÓN CON FUNCIÓN DE LLAMADA DIRECTA */}
           <a 
             href="tel:+17622440708" 
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: 'clamp(12px, 2vw, 16px) clamp(15px, 3vw, 35px)', 
-              borderRadius: '12px', 
+              padding: 'clamp(10px, 2vw, 15px) clamp(15px, 3vw, 30px)', 
+              borderRadius: '10px', 
               fontWeight: '900', 
-              fontSize: 'clamp(12px, 1.8vw, 16px)',
-              textDecoration: 'none', // Quita el subrayado del enlace
+              fontSize: 'clamp(12px, 2vw, 16px)',
+              textDecoration: 'none', 
               textAlign: 'center',
-              boxShadow: '0 6px 15px rgba(255,183,3,0.4)',
-              whiteSpace: 'nowrap',
-              display: 'inline-block'
+              boxShadow: '0 4px 12px rgba(255,183,3,0.4)',
+              whiteSpace: 'nowrap'
             }}
           >
             BOOK NOW
