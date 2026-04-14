@@ -40,7 +40,7 @@ export default function Home() {
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
       <nav style={{ 
         backgroundColor: '#FFFFFF',
-        padding: '10px clamp(15px, 5vw, 60px)',
+        padding: '15px clamp(15px, 5vw, 60px)',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
@@ -49,58 +49,60 @@ export default function Home() {
 
         <div style={{
           display: 'flex',
-          flexWrap: 'wrap',
+          flexWrap: 'wrap', // Permite que el contacto baje en pantallas pequeñas
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '10px'
+          gap: '20px' // Más espacio entre logo y contacto
         }}>
 
-          {/* LOGO */}
+          {/* LOGO - Ahora con mayor peso visual */}
           <div 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
-              gap: '12px',
-              flex: '1 1 250px'
+              cursor: 'pointer',
+              flex: '1 1 100%', // En móvil toma todo el ancho para verse gigante
+              maxWidth: '400px' // Limita el crecimiento en escritorio
             }}
           >
             <img 
               src="/Logocompleto.png" 
               alt="Logo" 
               style={{ 
-                height: 'clamp(60px, 6vw, 80px)', // 🔥 grande pero controlado
-                width: 'auto'
+                height: 'clamp(80px, 10vw, 110px)', // Aumentado significativamente
+                width: 'auto',
+                objectFit: 'contain'
               }} 
             />
-            
           </div>
 
-          {/* CONTACTO */}
+          {/* CONTACTO - Compacto para no competir con el logo */}
           <div style={{ 
             display: 'flex',
             alignItems: 'center',
-            gap: '20px',
-            flex: '1 1 300px',
+            gap: '15px',
+            flex: '1 1 auto',
             justifyContent: 'flex-end',
-            flexWrap: 'wrap'
+            flexWrap: 'nowrap' // Mantiene número y botón juntos
           }}>
 
-            {/* TEXTO */}
+            {/* TEXTO DE CONTACTO */}
             <div style={{ textAlign: 'right' }}>
               <p style={{ 
-                fontSize: 'clamp(10px, 1.5vw, 12px)', 
+                fontSize: '11px', 
                 color: '#6B7280', 
                 fontWeight: 'bold', 
                 margin: 0, 
-                textTransform: 'uppercase' 
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px'
               }}>
                 Free Estimate
               </p>
               <a 
                 href="tel:+17622440708"
                 style={{ 
-                  fontSize: 'clamp(16px, 2vw, 20px)', 
+                  fontSize: 'clamp(15px, 1.8vw, 18px)', 
                   fontWeight: '900', 
                   color: '#0B2219',
                   textDecoration: 'none'
@@ -110,20 +112,23 @@ export default function Home() {
               </a>
             </div>
 
-            {/* BOTÓN */}
+            {/* BOTÓN CALL NOW */}
             <a 
               href="tel:+17622440708" 
               style={{ 
                 backgroundColor: '#FFB703', 
                 color: '#0B2219', 
-                padding: '12px 22px', 
+                padding: '12px 24px', 
                 borderRadius: '12px', 
                 fontWeight: '900', 
                 fontSize: '14px',
                 textDecoration: 'none',
                 boxShadow: '0 4px 12px rgba(255,183,3,0.3)',
-                whiteSpace: 'nowrap'
+                whiteSpace: 'nowrap',
+                transition: 'transform 0.2s ease'
               }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               CALL NOW
             </a>
@@ -131,6 +136,15 @@ export default function Home() {
           </div>
 
         </div>
+
+        {/* Ajuste para pantallas grandes: logo y contacto en la misma línea */}
+        <style>{`
+          @media (min-width: 768px) {
+            div[style*="flex: 1 1 100%"] {
+              flex: 0 1 auto !important;
+            }
+          }
+        `}</style>
       </nav>
 
       {/* 2. HERO SECTION */}
