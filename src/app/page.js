@@ -66,22 +66,14 @@ export default function Home() {
             }}
           >
             <img 
-              src="/Imagenlogo.png" 
+              src="/Logocompleto.png" 
               alt="Logo" 
               style={{ 
                 height: 'clamp(60px, 6vw, 80px)', // 🔥 grande pero controlado
                 width: 'auto'
               }} 
             />
-            <img 
-              src="/Letralogo.png" 
-              alt="Brand" 
-              style={{ 
-                height: 'clamp(35px, 4vw, 55px)',
-                width: 'auto',
-                filter: 'brightness(0.1)'
-              }} 
-            />
+            
           </div>
 
           {/* CONTACTO */}
