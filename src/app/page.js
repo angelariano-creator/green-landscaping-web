@@ -58,20 +58,33 @@ export default function Home() {
         gap: '15px'
       }}>
         
-        {/* LOGO AREA - Ahora sin absolute para que no se encime */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        {/* LOGO AREA - Ajustado para buen tamaño y alineación */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '12px', // Espacio entre el icono y el texto
+          cursor: 'pointer' 
+        }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
-            style={{ height: '50px', width: 'auto' }} 
+            style={{ 
+              height: '65px', // Aumentado para que resalte
+              width: 'auto',
+              objectFit: 'contain'
+            }} 
           />
           <img 
             src="/Letralogo.png" 
             alt="Green Landscaping" 
-            style={{ height: '40px', width: 'auto', filter: 'brightness(0.1)' }} 
+            style={{ 
+              height: '55px', // Proporcional al icono
+              width: 'auto', 
+              filter: 'brightness(0.1)',
+              objectFit: 'contain'
+            }} 
           />
         </div>
-
         {/* CONTACT & ACTION - Se alinean solos a la derecha */}
         <div style={{ 
           display: 'flex', 
