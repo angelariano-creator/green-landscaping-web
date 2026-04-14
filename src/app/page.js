@@ -145,7 +145,7 @@ export default function Home() {
           <div style={{ position: 'relative', zIndex: 20, textAlign: 'center', padding: '20px', maxWidth: '900px' }}>
             <h1 style={{ 
               color: '#FFFFFF', 
-              fontSize: 'clamp(40px, 8vw, 75px)', 
+              fontSize: 'clamp(2rem, 8vw, 4rem)', 
               lineHeight: '1.1', 
               marginBottom: '20px',
               fontWeight: '900',
