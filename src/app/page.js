@@ -274,7 +274,7 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
               <ProjectCard 
                 title="Sod Installation" 
-                images={['/Sod1.JPG', '/Sod2.JPG', '/Sod3.jpg', '/Sod4.JPG']} 
+                images={['/Sod1.JPG', '/Sod2.JPG', '/Sod3.JPG', '/Sod4.JPG']} 
               />
               <ProjectCard 
                 title="Irrigation Systems" 
