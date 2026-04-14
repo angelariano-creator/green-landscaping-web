@@ -1,0 +1,21 @@
+/* 1. Importación de Fuentes Premium de Google */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,300&family=Inter:wght@300;400;700;900&display=swap');
+
+/* 2. Directivas de Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Configuración Base para forzar elegancia */
+html, body {
+  background-color: white;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Forzamos la fuente Serif para Títulos */
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700;
+}
