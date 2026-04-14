@@ -40,27 +40,31 @@ export default function Home() {
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
       <nav style={{ 
         backgroundColor: '#FFFFFF',
-        padding: '15px clamp(15px, 5vw, 60px)',
+        padding: '10px clamp(15px, 5vw, 40px)',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
+        boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+        minHeight: '100px', // Altura mínima para que el logo respire
+        display: 'flex',
+        alignItems: 'center'
       }}>
 
         <div style={{
           display: 'flex',
-          flexDirection: 'column', // 🔥 Fuerza al logo a estar arriba en móvil
+          width: '100%',
           alignItems: 'center',
-          gap: '15px'
+          justifyContent: 'space-between',
+          gap: '10px'
         }}>
 
-          {/* SECCIÓN DEL LOGO - Máximo protagonismo */}
+          {/* COLUMNA IZQUIERDA: LOGO GRANDE */}
           <div 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             style={{ 
-              width: '100%', 
+              flex: '0 1 60%', // Ocupa hasta el 60% del ancho
               display: 'flex', 
-              justifyContent: 'center', // Centra el logo en móvil
+              justifyContent: 'flex-start',
               cursor: 'pointer'
             }}
           >
@@ -69,82 +73,78 @@ export default function Home() {
               alt="Logo" 
               style={{ 
                 height: 'auto',
-                width: 'clamp(200px, 60vw, 320px)', // 🔥 Controla el ancho para que se vea GRANDE
-                maxHeight: '110px',
+                width: '100%',
+                maxWidth: '350px', // Límite máximo para que no sea excesivo en PC
+                minWidth: '180px', // Mínimo para que nunca se vea pequeño
                 objectFit: 'contain'
               }} 
             />
           </div>
 
-          {/* SECCIÓN DE CONTACTO - Debajo del logo en móvil */}
+          {/* COLUMNA DERECHA: CONTACTO PEQUEÑO */}
           <div style={{ 
+            flex: '0 1 auto', // Solo ocupa el espacio necesario
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 'clamp(15px, 4vw, 30px)',
-            width: '100%',
-            paddingTop: '10px',
-            borderTop: '1px solid #f3f4f6' // Línea sutil de separación
+            flexDirection: 'column', // Texto arriba y botón abajo para ahorrar espacio horizontal
+            alignItems: 'flex-end',
+            gap: '8px'
           }}>
 
+            {/* NÚMERO DE TELÉFONO */}
             <div style={{ textAlign: 'right' }}>
               <p style={{ 
-                fontSize: '10px', 
+                fontSize: '9px', 
                 color: '#6B7280', 
                 fontWeight: 'bold', 
                 margin: 0, 
-                textTransform: 'uppercase',
-                letterSpacing: '1px'
+                textTransform: 'uppercase'
               }}>
                 Free Estimate
               </p>
               <a 
                 href="tel:+17622440708"
                 style={{ 
-                  fontSize: '16px', 
+                  fontSize: '14px', // Tamaño reducido
                   fontWeight: '900', 
                   color: '#0B2219',
-                  textDecoration: 'none'
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap'
                 }}
               >
                 +1 (762) 244-0708
               </a>
             </div>
 
+            {/* BOTÓN CALL NOW PEQUEÑO */}
             <a 
               href="tel:+17622440708" 
               style={{ 
                 backgroundColor: '#FFB703', 
                 color: '#0B2219', 
-                padding: '10px 20px', 
-                borderRadius: '10px', 
+                padding: '8px 16px', // Padding más pequeño
+                borderRadius: '8px', 
                 fontWeight: '900', 
-                fontSize: '14px',
+                fontSize: '12px', // Fuente más pequeña
                 textDecoration: 'none',
-                boxShadow: '0 4px 12px rgba(255,183,3,0.3)',
-                whiteSpace: 'nowrap'
+                boxShadow: '0 4px 10px rgba(255,183,3,0.2)',
+                whiteSpace: 'nowrap',
+                textAlign: 'center'
               }}
             >
               CALL NOW
             </a>
           </div>
+
         </div>
 
-        {/* CSS para volver a una sola línea en computadoras (Escritorio) */}
+        {/* Ajuste responsivo para móviles muy pequeños */}
         <style>{`
-          @media (min-width: 768px) {
-            div[style*="flex-direction: column"] {
-              flex-direction: row !important;
-              justify-content: space-between !important;
+          @media (max-width: 400px) {
+            img[style*="maxWidth: 350px"] {
+              maxWidth: 220px !important;
             }
-            div[style*="justify-content: center"] {
-              width: auto !important;
-              justify-content: flex-start !important;
-            }
-            div[style*="border-top: 1px solid"] {
-              width: auto !important;
-              border-top: none !important;
-              padding-top: 0 !important;
+            a[style*="fontSize: 14px"] {
+              fontSize: 12px !important;
             }
           }
         `}</style>
