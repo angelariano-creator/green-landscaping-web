@@ -40,17 +40,14 @@ export default function Home() {
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
       <nav style={{ 
         backgroundColor: '#FFFFFF',
-        // 1. Forzamos una barra extremadamente delgada (50px)
-        height: '50px', 
-        // 2. Quitamos todo el padding vertical para comprimir
-        padding: '0 clamp(10px, 4vw, 30px)', 
+        padding: '5px clamp(15px, 5vw, 40px)', // Padding vertical mínimo para adelgazar la barra
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 2px 15px rgba(0,0,0,0.05)',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
         display: 'flex',
         alignItems: 'center',
-        overflow: 'visible' // 🔥 Crucial: permite que el logo sobresalga hacia abajo
+        minHeight: '70px' // Altura controlada de la barra blanca
       }}>
 
         <div style={{
@@ -58,113 +55,84 @@ export default function Home() {
           width: '100%',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '5px',
-          position: 'relative',
-          height: '100%'
+          gap: '15px'
         }}>
 
-          {/* COLUMNA IZQUIERDA: LOGO GIGANTE Y DESBORDADO */}
+          {/* LADO IZQUIERDO: LOGO GRANDE */}
           <div 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             style={{ 
-              flex: '0 1 65%', // Damos prioridad de ancho al logo
+              flex: '1 1 auto', 
               display: 'flex', 
               justifyContent: 'flex-start',
-              cursor: 'pointer',
-              alignItems: 'center',
-              height: '100%',
-              position: 'relative'
+              cursor: 'pointer'
             }}
           >
             <img 
-              src="/Logocomcompleto.png" 
-              alt="Logo" 
+              src="/Logocompleto.PNG" 
+              alt="Green Landscaping and Irrigation LLC" 
               style={{ 
-                // 3. Forzamos el tamaño enorme (clamp(100px-220px))
-                height: 'clamp(100px, 15vw, 220px)', 
-                width: 'auto',
-                objectFit: 'contain',
-                // 4. Reposicionamos el logo para que baje y sobresalga de la barra
-                position: 'absolute',
-                top: '0', 
-                left: '0',
-                transform: 'translateY(-10px)', // Ajuste fino para centrar visualmente
-                zIndex: 1010, // Asegura que quede por encima de todo
-                filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' // Sombra sutil al desborde
+                height: 'auto',
+                width: 'clamp(180px, 25vw, 280px)', // El logo mantiene su escala visual grande
+                maxHeight: '90px', // Evita que la barra crezca demasiado
+                objectFit: 'contain'
               }} 
             />
           </div>
 
-          {/* COLUMNA DERECHA: CONTACTO ULTRA-PEQUEÑO */}
+          {/* LADO DERECHO: DATOS PEQUEÑOS */}
           <div style={{ 
-            flex: '0 1 auto', 
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-end',
-            gap: '0px', // Sin espacio entre elementos
-            transform: 'scale(0.85)', // Escalamos todo el bloque para achicarlo más
-            transformOrigin: 'right center'
+            justifyContent: 'center',
+            flexShrink: 0
           }}>
-
-            <div style={{ textAlign: 'right' }}>
+            
+            {/* TEXTO Y TELÉFONO */}
+            <div style={{ textAlign: 'right', marginBottom: '4px' }}>
               <p style={{ 
-                fontSize: '7.5px', // Texto diminuto
+                fontSize: 'clamp(8px, 1vw, 10px)', 
                 color: '#6B7280', 
                 fontWeight: 'bold', 
                 margin: 0, 
-                textTransform: 'uppercase'
+                textTransform: 'uppercase' 
               }}>
                 Free Estimate
               </p>
               <a 
                 href="tel:+17622440708"
                 style={{ 
-                  fontSize: '11px', 
+                  fontSize: 'clamp(12px, 1.5vw, 15px)', 
                   fontWeight: '900', 
                   color: '#0B2219',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
+                  textDecoration: 'none'
                 }}
               >
                 +1 (762) 244-0708
               </a>
             </div>
 
+            {/* BOTÓN MÁS PEQUEÑO */}
             <a 
               href="tel:+17622440708" 
               style={{ 
                 backgroundColor: '#FFB703', 
                 color: '#0B2219', 
-                padding: '4px 10px', // Botón mini
-                borderRadius: '5px', 
+                padding: '6px 16px', 
+                borderRadius: '8px', 
                 fontWeight: '900', 
-                fontSize: '10px', // Fuente muy pequeña
+                fontSize: '12px',
                 textDecoration: 'none',
-                boxShadow: '0 2px 5px rgba(255,183,3,0.15)',
-                whiteSpace: 'nowrap',
-                marginTop: '1px'
+                boxShadow: '0 4px 12px rgba(255,183,3,0.3)',
+                whiteSpace: 'nowrap'
               }}
             >
               CALL NOW
             </a>
+
           </div>
-
         </div>
-
-        {/* CSS para PC (Escritorio) - Vuelve el logo a su sitio */}
-        <style>{`
-          @media (min-width: 768px) {
-            nav { height: 80px !important; }
-            img[style*="position: absolute"] {
-              position: static !important;
-              height: 100px !important;
-              transform: none !important;
-            }
-            div[style*="transform: scale(0.85)"] {
-              transform: scale(1) !important;
-            }
-          }
-        `}</style>
       </nav>
 
       {/* 2. HERO SECTION */}
