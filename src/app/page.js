@@ -42,37 +42,33 @@ export default function Home() {
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>
       
-      {/* 1. NAVBAR TOTALMENTE CORREGIDO */}
+      {/* 1. NAVBAR RE-ESTRUCTURADO */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
         minHeight: '80px', 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        padding: '15px clamp(10px, 4vw, 40px)', // Padding lateral dinámico
+        padding: '10px clamp(15px, 5vw, 50px)', 
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-        flexWrap: 'wrap', 
-        gap: '20px'
       }}>
         
-        {/* AREA DEL LOGO - Ajustada para Web y Móvil */}
+        {/* AREA DEL LOGO - Sin anchos fijos que bloqueen el espacio */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '12px', 
+          gap: 'clamp(5px, 2vw, 15px)', 
           cursor: 'pointer',
-          flex: '1 1 auto', // Permite crecer y encogerse
-          justifyContent: 'flex-start',
-          minWidth: '200px'
+          flex: '0 1 auto', // No crece a la fuerza, solo ocupa lo necesario
         }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
             style={{ 
-              height: 'clamp(50px, 8vw, 75px)', // Crece en web, tamaño ideal en móvil
+              height: 'clamp(45px, 7vw, 70px)', // Escala fluida según la pantalla
               width: 'auto', 
               objectFit: 'contain' 
             }} 
@@ -81,36 +77,36 @@ export default function Home() {
             src="/Letralogo.png" 
             alt="Green Landscaping" 
             style={{ 
-              height: 'clamp(40px, 6vw, 60px)', 
+              height: 'clamp(35px, 5vw, 55px)', 
               width: 'auto', 
               filter: 'brightness(0.1)', 
-              objectFit: 'contain' 
+              objectFit: 'contain',
+              display: 'block' // Asegura que se mantenga visible
             }} 
           />
         </div>
 
-        {/* CONTACTO Y ACCIÓN - Se auto-centra en móvil */}
+        {/* CONTACTO Y ACCIÓN - Alineados a la derecha */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(15px, 3vw, 30px)', 
-          flexWrap: 'nowrap', // Evita que el número y el botón se separen feo
-          justifyContent: 'flex-end',
-          flex: '1 1 auto'
+          gap: 'clamp(10px, 3vw, 25px)', 
+          flexShrink: 0 // Evita que esta sección se aplaste
         }}>
           <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-            <div style={{ fontSize: 'clamp(9px, 2vw, 11px)', color: '#6B7280', fontWeight: 'bold' }}>FREE ESTIMATE:</div>
-            <div style={{ fontSize: 'clamp(13px, 2.5vw, 16px)', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
+            <div style={{ fontSize: 'clamp(8px, 1.5vw, 11px)', color: '#6B7280', fontWeight: 'bold', lineHeight: '1' }}>FREE ESTIMATE:</div>
+            <div style={{ fontSize: 'clamp(12px, 2.2vw, 17px)', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
           </div>
+          
           <button 
             onClick={() => scrollToSection('estimate-section')}
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: 'clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px)', 
+              padding: 'clamp(8px, 1.8vw, 14px) clamp(12px, 2.5vw, 28px)', 
               borderRadius: '8px', 
               fontWeight: '900', 
-              fontSize: 'clamp(11px, 2vw, 14px)',
+              fontSize: 'clamp(10px, 1.8vw, 15px)',
               border: 'none',
               cursor: 'pointer',
               boxShadow: '0 4px 10px rgba(255,183,3,0.3)',
