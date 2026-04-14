@@ -42,33 +42,35 @@ export default function Home() {
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>
       
-      {/* 1. NAVBAR RE-ESTRUCTURADO */}
+      {/* 1. NAVBAR OPTIMIZADO PARA LOGO GRANDE */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
-        minHeight: '80px', 
-        display: 'flex', 
-        justifyContent: 'space-between', 
+        minHeight: '90px', 
+        display: 'grid', 
+        // En móvil: 1 columna. En pantallas medianas+: 2 columnas (Logo | Contacto)
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
         alignItems: 'center', 
-        padding: '10px clamp(15px, 5vw, 50px)', 
+        padding: '10px clamp(20px, 5vw, 60px)', 
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+        gap: '15px'
       }}>
         
-        {/* AREA DEL LOGO - Sin anchos fijos que bloqueen el espacio */}
+        {/* AREA DEL LOGO - Ahora con más presencia */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(5px, 2vw, 15px)', 
+          gap: '12px', 
           cursor: 'pointer',
-          flex: '0 1 auto', // No crece a la fuerza, solo ocupa lo necesario
+          justifyContent: 'flex-start'
         }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
             style={{ 
-              height: 'clamp(45px, 7vw, 70px)', // Escala fluida según la pantalla
+              height: 'clamp(60px, 10vw, 85px)', // Mínimo 60px para que no se pierda
               width: 'auto', 
               objectFit: 'contain' 
             }} 
@@ -77,25 +79,40 @@ export default function Home() {
             src="/Letralogo.png" 
             alt="Green Landscaping" 
             style={{ 
-              height: 'clamp(35px, 5vw, 55px)', 
+              height: 'clamp(45px, 7vw, 65px)', 
               width: 'auto', 
               filter: 'brightness(0.1)', 
-              objectFit: 'contain',
-              display: 'block' // Asegura que se mantenga visible
+              objectFit: 'contain' 
             }} 
           />
         </div>
 
-        {/* CONTACTO Y ACCIÓN - Alineados a la derecha */}
+        {/* CONTACTO Y ACCIÓN - Alineación inteligente */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(10px, 3vw, 25px)', 
-          flexShrink: 0 // Evita que esta sección se aplaste
+          gap: 'clamp(15px, 4vw, 35px)', 
+          justifyContent: 'flex-end', // En web a la derecha, en móvil se ajusta por el grid
+          flexWrap: 'nowrap'
         }}>
           <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-            <div style={{ fontSize: 'clamp(8px, 1.5vw, 11px)', color: '#6B7280', fontWeight: 'bold', lineHeight: '1' }}>FREE ESTIMATE:</div>
-            <div style={{ fontSize: 'clamp(12px, 2.2vw, 17px)', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
+            <p style={{ 
+              fontSize: 'clamp(10px, 1.5vw, 12px)', 
+              color: '#6B7280', 
+              fontWeight: 'bold', 
+              margin: 0, 
+              textTransform: 'uppercase' 
+            }}>
+              Free Estimate:
+            </p>
+            <p style={{ 
+              fontSize: 'clamp(14px, 2.5vw, 19px)', 
+              color: '#0B2219', 
+              fontWeight: '900', 
+              margin: 0 
+            }}>
+              +1 (762) 244-0708
+            </p>
           </div>
           
           <button 
@@ -103,15 +120,18 @@ export default function Home() {
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: 'clamp(8px, 1.8vw, 14px) clamp(12px, 2.5vw, 28px)', 
-              borderRadius: '8px', 
+              padding: 'clamp(10px, 2vw, 15px) clamp(15px, 3vw, 30px)', 
+              borderRadius: '10px', 
               fontWeight: '900', 
-              fontSize: 'clamp(10px, 1.8vw, 15px)',
+              fontSize: 'clamp(12px, 2vw, 16px)',
               border: 'none',
               cursor: 'pointer',
-              boxShadow: '0 4px 10px rgba(255,183,3,0.3)',
-              whiteSpace: 'nowrap'
+              boxShadow: '0 4px 12px rgba(255,183,3,0.4)',
+              whiteSpace: 'nowrap',
+              transition: 'transform 0.2s'
             }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             BOOK NOW
           </button>
