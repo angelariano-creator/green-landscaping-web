@@ -38,98 +38,91 @@ export default function Home() {
   };
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
-      {/* 1. NAVBAR CORREGIDO - LOGO GRANDE Y RESPONSIVO */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
-        minHeight: '90px', 
         display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center', 
-        padding: '10px clamp(15px, 5vw, 60px)', 
+        flexDirection: 'column',
+        padding: '10px 20px',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 4px 25px rgba(0,0,0,0.07)',
-        flexWrap: 'wrap', // ESTO es la clave: permite que los elementos bajen si no hay espacio
-        gap: '15px'
+        boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
       }}>
-        
-        {/* AREA DEL LOGO - Escalado agresivo y alineación a la izquierda */}
+
+        {/* FILA 1: LOGO */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '15px', 
-          cursor: 'pointer',
-          flex: '1 1 auto', // Permite que ocupe todo el ancho disponible
-          justifyContent: 'flex-start'
-        }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-          <img 
-            src="/Imagenlogo.png" 
-            alt="Logo Icon" 
-            style={{ 
-              height: 'clamp(70px, 12vw, 95px)', // Mucho más grande que antes
-              width: 'auto', 
-              objectFit: 'contain' 
-            }} 
-          />
-          <img 
-            src="/Letralogo.png" 
-            alt="Green Landscaping" 
-            style={{ 
-              height: 'clamp(50px, 8vw, 70px)', // Texto de marca legible
-              width: 'auto', 
-              filter: 'brightness(0.1)', 
-              objectFit: 'contain' 
-            }} 
-          />
+          justifyContent: 'space-between'
+        }}>
+          <div 
+            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
+          >
+            <img 
+              src="/Imagenlogo.png" 
+              alt="Logo" 
+              style={{ height: '50px' }} 
+            />
+            <img 
+              src="/Letralogo.png" 
+              alt="Brand" 
+              style={{ height: '35px', filter: 'brightness(0.1)' }} 
+            />
+          </div>
         </div>
 
-        {/* INFORMACIÓN DE CONTACTO - Se auto-centra en móvil */}
+        {/* FILA 2: CONTACTO */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(15px, 4vw, 35px)', 
-          flexWrap: 'nowrap',
-          justifyContent: 'center', // Centra el contacto cuando baja en móvil
-          flex: '1' // Asegura buen espacio
+          justifyContent: 'space-between',
+          marginTop: '8px',
+          gap: '10px'
         }}>
-          <div style={{ textAlign: 'center' }}>
+          
+          {/* TELÉFONO */}
+          <div>
             <p style={{ 
-              fontSize: 'clamp(9px, 1.8vw, 12px)', 
+              fontSize: '10px', 
               color: '#6B7280', 
               fontWeight: 'bold', 
               margin: 0, 
               textTransform: 'uppercase' 
             }}>
-              Free Estimate:
+              Free Estimate
             </p>
-            <p style={{ 
-              fontSize: 'clamp(14px, 2.5vw, 19px)', 
-              color: '#0B2219', 
-              fontWeight: '900', 
-              margin: 0 
-            }}>
+            <a 
+              href="tel:+17622440708"
+              style={{ 
+                fontSize: '16px', 
+                fontWeight: '900', 
+                color: '#0B2219',
+                textDecoration: 'none'
+              }}
+            >
               +1 (762) 244-0708
-            </p>
+            </a>
           </div>
-          
+
+          {/* BOTÓN */}
           <a 
             href="tel:+17622440708" 
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: 'clamp(10px, 2vw, 15px) clamp(15px, 3vw, 30px)', 
+              padding: '10px 18px', 
               borderRadius: '10px', 
               fontWeight: '900', 
-              fontSize: 'clamp(12px, 2vw, 16px)',
-              textDecoration: 'none', 
-              textAlign: 'center',
-              boxShadow: '0 4px 12px rgba(255,183,3,0.4)',
+              fontSize: '13px',
+              textDecoration: 'none',
+              boxShadow: '0 4px 10px rgba(255,183,3,0.3)',
               whiteSpace: 'nowrap'
             }}
           >
-            BOOK NOW
+            CALL NOW
           </a>
+
         </div>
       </nav>
 
