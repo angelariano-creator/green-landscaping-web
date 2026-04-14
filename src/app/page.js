@@ -49,60 +49,59 @@ export default function Home() {
 
         <div style={{
           display: 'flex',
-          flexWrap: 'wrap', // Permite que el contacto baje en pantallas pequeñas
+          flexDirection: 'column', // 🔥 Fuerza al logo a estar arriba en móvil
           alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '20px' // Más espacio entre logo y contacto
+          gap: '15px'
         }}>
 
-          {/* LOGO - Ahora con mayor peso visual */}
+          {/* SECCIÓN DEL LOGO - Máximo protagonismo */}
           <div 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             style={{ 
+              width: '100%', 
               display: 'flex', 
-              alignItems: 'center', 
-              cursor: 'pointer',
-              flex: '1 1 100%', // En móvil toma todo el ancho para verse gigante
-              maxWidth: '400px' // Limita el crecimiento en escritorio
+              justifyContent: 'center', // Centra el logo en móvil
+              cursor: 'pointer'
             }}
           >
             <img 
               src="/Logocompleto.png" 
               alt="Logo" 
               style={{ 
-                height: 'clamp(80px, 10vw, 110px)', // Aumentado significativamente
-                width: 'auto',
+                height: 'auto',
+                width: 'clamp(200px, 60vw, 320px)', // 🔥 Controla el ancho para que se vea GRANDE
+                maxHeight: '110px',
                 objectFit: 'contain'
               }} 
             />
           </div>
 
-          {/* CONTACTO - Compacto para no competir con el logo */}
+          {/* SECCIÓN DE CONTACTO - Debajo del logo en móvil */}
           <div style={{ 
             display: 'flex',
             alignItems: 'center',
-            gap: '15px',
-            flex: '1 1 auto',
-            justifyContent: 'flex-end',
-            flexWrap: 'nowrap' // Mantiene número y botón juntos
+            justifyContent: 'center',
+            gap: 'clamp(15px, 4vw, 30px)',
+            width: '100%',
+            paddingTop: '10px',
+            borderTop: '1px solid #f3f4f6' // Línea sutil de separación
           }}>
 
-            {/* TEXTO DE CONTACTO */}
             <div style={{ textAlign: 'right' }}>
               <p style={{ 
-                fontSize: '11px', 
+                fontSize: '10px', 
                 color: '#6B7280', 
                 fontWeight: 'bold', 
                 margin: 0, 
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px'
+                letterSpacing: '1px'
               }}>
                 Free Estimate
               </p>
               <a 
                 href="tel:+17622440708"
                 style={{ 
-                  fontSize: 'clamp(15px, 1.8vw, 18px)', 
+                  fontSize: '16px', 
                   fontWeight: '900', 
                   color: '#0B2219',
                   textDecoration: 'none'
@@ -112,36 +111,40 @@ export default function Home() {
               </a>
             </div>
 
-            {/* BOTÓN CALL NOW */}
             <a 
               href="tel:+17622440708" 
               style={{ 
                 backgroundColor: '#FFB703', 
                 color: '#0B2219', 
-                padding: '12px 24px', 
-                borderRadius: '12px', 
+                padding: '10px 20px', 
+                borderRadius: '10px', 
                 fontWeight: '900', 
                 fontSize: '14px',
                 textDecoration: 'none',
                 boxShadow: '0 4px 12px rgba(255,183,3,0.3)',
-                whiteSpace: 'nowrap',
-                transition: 'transform 0.2s ease'
+                whiteSpace: 'nowrap'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               CALL NOW
             </a>
-
           </div>
-
         </div>
 
-        {/* Ajuste para pantallas grandes: logo y contacto en la misma línea */}
+        {/* CSS para volver a una sola línea en computadoras (Escritorio) */}
         <style>{`
           @media (min-width: 768px) {
-            div[style*="flex: 1 1 100%"] {
-              flex: 0 1 auto !important;
+            div[style*="flex-direction: column"] {
+              flex-direction: row !important;
+              justify-content: space-between !important;
+            }
+            div[style*="justify-content: center"] {
+              width: auto !important;
+              justify-content: flex-start !important;
+            }
+            div[style*="border-top: 1px solid"] {
+              width: auto !important;
+              border-top: none !important;
+              padding-top: 0 !important;
             }
           }
         `}</style>
