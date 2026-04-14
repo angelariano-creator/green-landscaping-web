@@ -39,103 +39,104 @@ export default function Home() {
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
       <nav style={{ 
-        backgroundColor: '#FFFFFF',        
-        display: 'flex', 
-        flexDirection: 'column',
-        padding: '10px 20px',
+        backgroundColor: '#FFFFFF',
+        padding: '10px clamp(15px, 5vw, 60px)',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
       }}>
 
-        {/* FILA 1: LOGO */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between'
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '10px'
         }}>
+
+          {/* LOGO */}
           <div 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-            style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
-          >
-            <div style={{ 
+            style={{ 
               display: 'flex', 
               alignItems: 'center', 
               gap: '12px',
-              flex: '1' // 👈 le da más espacio al logo
-            }}>
-              <img 
-                src="/Imagenlogo.png" 
-                alt="Logo" 
-                style={{ 
-                  height: 'clamp(60px, 14vw, 85px)', // 🔥 más grande y responsivo
-                  width: 'auto'
-                }} 
-              />
-              <img 
-                src="/Letralogo.png" 
-                alt="Brand" 
-                style={{ 
-                  height: 'clamp(40px, 10vw, 60px)', // 🔥 texto más visible
-                  width: 'auto',
-                  filter: 'brightness(0.1)'
-                }} 
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* FILA 2: CONTACTO */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between',
-          marginTop: '8px',
-          gap: '10px'
-        }}>
-          
-          {/* TELÉFONO */}
-          <div>
-            <p style={{ 
-              fontSize: '10px', 
-              color: '#6B7280', 
-              fontWeight: 'bold', 
-              margin: 0, 
-              textTransform: 'uppercase' 
-            }}>
-              Free Estimate
-            </p>
-            <a 
-              href="tel:+17622440708"
-              style={{ 
-                fontSize: '16px', 
-                fontWeight: '900', 
-                color: '#0B2219',
-                textDecoration: 'none'
-              }}
-            >
-              +1 (762) 244-0708
-            </a>
-          </div>
-
-          {/* BOTÓN */}
-          <a 
-            href="tel:+17622440708" 
-            style={{ 
-              backgroundColor: '#FFB703', 
-              color: '#0B2219', 
-              padding: '10px 18px', 
-              borderRadius: '10px', 
-              fontWeight: '900', 
-              fontSize: '13px',
-              textDecoration: 'none',
-              boxShadow: '0 4px 10px rgba(255,183,3,0.3)',
-              whiteSpace: 'nowrap'
+              flex: '1 1 250px'
             }}
           >
-            CALL NOW
-          </a>
+            <img 
+              src="/Imagenlogo.png" 
+              alt="Logo" 
+              style={{ 
+                height: 'clamp(60px, 6vw, 80px)', // 🔥 grande pero controlado
+                width: 'auto'
+              }} 
+            />
+            <img 
+              src="/Letralogo.png" 
+              alt="Brand" 
+              style={{ 
+                height: 'clamp(35px, 4vw, 55px)',
+                width: 'auto',
+                filter: 'brightness(0.1)'
+              }} 
+            />
+          </div>
+
+          {/* CONTACTO */}
+          <div style={{ 
+            display: 'flex',
+            alignItems: 'center',
+            gap: '20px',
+            flex: '1 1 300px',
+            justifyContent: 'flex-end',
+            flexWrap: 'wrap'
+          }}>
+
+            {/* TEXTO */}
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ 
+                fontSize: 'clamp(10px, 1.5vw, 12px)', 
+                color: '#6B7280', 
+                fontWeight: 'bold', 
+                margin: 0, 
+                textTransform: 'uppercase' 
+              }}>
+                Free Estimate
+              </p>
+              <a 
+                href="tel:+17622440708"
+                style={{ 
+                  fontSize: 'clamp(16px, 2vw, 20px)', 
+                  fontWeight: '900', 
+                  color: '#0B2219',
+                  textDecoration: 'none'
+                }}
+              >
+                +1 (762) 244-0708
+              </a>
+            </div>
+
+            {/* BOTÓN */}
+            <a 
+              href="tel:+17622440708" 
+              style={{ 
+                backgroundColor: '#FFB703', 
+                color: '#0B2219', 
+                padding: '12px 22px', 
+                borderRadius: '12px', 
+                fontWeight: '900', 
+                fontSize: '14px',
+                textDecoration: 'none',
+                boxShadow: '0 4px 12px rgba(255,183,3,0.3)',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              CALL NOW
+            </a>
+
+          </div>
 
         </div>
       </nav>
