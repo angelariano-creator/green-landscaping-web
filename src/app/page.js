@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 
-// 1. COMPONENTE PARA LAS TARJETAS DE PROYECTOS
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
 
@@ -29,7 +28,6 @@ function ProjectCard({ images, title }) {
     </div>
   );
 }
-
 export default function Home() {
   
   const scrollToSection = (id) => {
@@ -38,39 +36,38 @@ export default function Home() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
   return (
-    <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>
-      
-      {/* 1. NAVBAR OPTIMIZADO PARA LOGO GRANDE */}
+    <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
+      {/* 1. NAVBAR - LOGO Y TEXTO AMPLIADOS */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
-        minHeight: '90px', 
-        display: 'grid', 
-        // En móvil: 1 columna. En pantallas medianas+: 2 columnas (Logo | Contacto)
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        minHeight: '100px', // Aumentamos la altura base para dar aire
+        display: 'flex', 
+        justifyContent: 'space-between', 
         alignItems: 'center', 
-        padding: '10px clamp(20px, 5vw, 60px)', 
+        padding: '10px clamp(20px, 6vw, 80px)', 
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-        gap: '15px'
+        boxShadow: '0 4px 25px rgba(0,0,0,0.07)',
+        flexWrap: 'wrap',
+        gap: '20px'
       }}>
         
-        {/* AREA DEL LOGO - Ahora con más presencia */}
+        {/* AREA DEL LOGO - Escalado agresivo para mayor visibilidad */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '12px', 
+          gap: '15px', 
           cursor: 'pointer',
-          justifyContent: 'flex-start'
+          flex: '1 1 auto',
+          minWidth: '280px' // Asegura que el logo no se comprima demasiado
         }} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
             style={{ 
-              height: 'clamp(60px, 10vw, 85px)', // Mínimo 60px para que no se pierda
+              height: 'clamp(70px, 12vw, 95px)', // Mucho más grande que antes
               width: 'auto', 
               objectFit: 'contain' 
             }} 
@@ -79,7 +76,7 @@ export default function Home() {
             src="/Letralogo.png" 
             alt="Green Landscaping" 
             style={{ 
-              height: 'clamp(45px, 7vw, 65px)', 
+              height: 'clamp(50px, 8vw, 70px)', // Texto de marca legible
               width: 'auto', 
               filter: 'brightness(0.1)', 
               objectFit: 'contain' 
@@ -87,32 +84,31 @@ export default function Home() {
           />
         </div>
 
-        {/* CONTACTO Y ACCIÓN - Alineación inteligente */}
+        {/* INFORMACIÓN DE CONTACTO - Reforzada */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: 'clamp(15px, 4vw, 35px)', 
-          justifyContent: 'flex-end', // En web a la derecha, en móvil se ajusta por el grid
-          flexWrap: 'nowrap'
+          gap: 'clamp(20px, 4vw, 40px)', 
+          flex: '1 1 auto',
+          justifyContent: 'flex-end'
         }}>
           <div style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
-            <p style={{ 
-              fontSize: 'clamp(10px, 1.5vw, 12px)', 
+            <div style={{ 
+              fontSize: 'clamp(11px, 1.5vw, 13px)', 
               color: '#6B7280', 
-              fontWeight: 'bold', 
-              margin: 0, 
-              textTransform: 'uppercase' 
+              fontWeight: '800', 
+              letterSpacing: '0.5px',
+              marginBottom: '2px'
             }}>
-              Free Estimate:
-            </p>
-            <p style={{ 
-              fontSize: 'clamp(14px, 2.5vw, 19px)', 
+              FREE ESTIMATE:
+            </div>
+            <div style={{ 
+              fontSize: 'clamp(16px, 2.8vw, 22px)', 
               color: '#0B2219', 
-              fontWeight: '900', 
-              margin: 0 
+              fontWeight: '900' 
             }}>
               +1 (762) 244-0708
-            </p>
+            </div>
           </div>
           
           <button 
@@ -120,18 +116,16 @@ export default function Home() {
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: 'clamp(10px, 2vw, 15px) clamp(15px, 3vw, 30px)', 
-              borderRadius: '10px', 
+              padding: '14px 30px', 
+              borderRadius: '12px', 
               fontWeight: '900', 
-              fontSize: 'clamp(12px, 2vw, 16px)',
+              fontSize: 'clamp(13px, 1.8vw, 16px)',
               border: 'none',
               cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(255,183,3,0.4)',
+              boxShadow: '0 6px 15px rgba(255,183,3,0.4)',
               whiteSpace: 'nowrap',
-              transition: 'transform 0.2s'
+              transition: 'all 0.3s ease'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             BOOK NOW
           </button>
