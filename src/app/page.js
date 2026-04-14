@@ -274,15 +274,15 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
               <ProjectCard 
                 title="Sod Installation" 
-                images={['/Sod1.jpg', '/sod2.jpg', '/sod3.jpg', '/sod4.jpg']} 
+                images={['/Sod1.JPG', '/Sod2.JPG', '/Sod3.jpg', '/Sod4.JPG']} 
               />
               <ProjectCard 
                 title="Irrigation Systems" 
-                images={['Irrigation1.jpg', '/Irrigation2.jpg', '/Irrigation3.jpg', '/Irrigation4.jpg']} 
+                images={['Irrigation1.JPG', '/Irrigation2.JPG', '/Irrigation3.JPG', '/Irrigation4.JPG']} 
               />
               <ProjectCard 
                 title="Landscape Design" 
-                images={['/Land1.jpg', '/Land2.jpg', '/Imagen2.jpg', '/Land3.jpg']} 
+                images={['/Land1.JPG', '/Land2.JPG', '/Imagen2.JPG', '/Land3.JPG']} 
               />
           </div>
         </div>
