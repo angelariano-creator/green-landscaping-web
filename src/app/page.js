@@ -59,16 +59,30 @@ export default function Home() {
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
           >
-            <img 
-              src="/Imagenlogo.png" 
-              alt="Logo" 
-              style={{ height: '50px' }} 
-            />
-            <img 
-              src="/Letralogo.png" 
-              alt="Brand" 
-              style={{ height: '35px', filter: 'brightness(0.1)' }} 
-            />
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '12px',
+              flex: '1' // 👈 le da más espacio al logo
+            }}>
+              <img 
+                src="/Imagenlogo.png" 
+                alt="Logo" 
+                style={{ 
+                  height: 'clamp(60px, 14vw, 85px)', // 🔥 más grande y responsivo
+                  width: 'auto'
+                }} 
+              />
+              <img 
+                src="/Letralogo.png" 
+                alt="Brand" 
+                style={{ 
+                  height: 'clamp(40px, 10vw, 60px)', // 🔥 texto más visible
+                  width: 'auto',
+                  filter: 'brightness(0.1)'
+                }} 
+              />
+            </div>
           </div>
         </div>
 
