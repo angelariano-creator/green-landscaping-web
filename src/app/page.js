@@ -40,12 +40,14 @@ export default function Home() {
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
       <nav style={{ 
         backgroundColor: '#FFFFFF',
-        padding: '10px clamp(15px, 5vw, 40px)',
+        // 1. Bajamos la altura mínima de 100px a 70px o 80px
+        minHeight: '75px', 
+        // 2. Reducimos el padding vertical de 10px a 5px para "apretar" el contenido
+        padding: '5px clamp(15px, 5vw, 40px)', 
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-        minHeight: '100px', // Altura mínima para que el logo respire
+        boxShadow: '0 2px 15px rgba(0,0,0,0.05)', // Sombra un poco más sutil
         display: 'flex',
         alignItems: 'center'
       }}>
@@ -58,11 +60,11 @@ export default function Home() {
           gap: '10px'
         }}>
 
-          {/* COLUMNA IZQUIERDA: LOGO GRANDE */}
+          {/* LOGO - Ajustamos la altura para que no fuerce a la barra a crecer */}
           <div 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
             style={{ 
-              flex: '0 1 60%', // Ocupa hasta el 60% del ancho
+              flex: '0 1 60%', 
               display: 'flex', 
               justifyContent: 'flex-start',
               cursor: 'pointer'
@@ -72,28 +74,26 @@ export default function Home() {
               src="/Logocompleto.png" 
               alt="Logo" 
               style={{ 
-                height: 'auto',
-                width: '100%',
-                maxWidth: '350px', // Límite máximo para que no sea excesivo en PC
-                minWidth: '180px', // Mínimo para que nunca se vea pequeño
+                // 3. Bajamos la altura máxima del logo para que quepa en una barra más fina
+                height: 'clamp(55px, 8vw, 70px)', 
+                width: 'auto',
                 objectFit: 'contain'
               }} 
             />
           </div>
 
-          {/* COLUMNA DERECHA: CONTACTO PEQUEÑO */}
+          {/* CONTACTO - Manteniendo la alineación a la derecha */}
           <div style={{ 
-            flex: '0 1 auto', // Solo ocupa el espacio necesario
+            flex: '0 1 auto', 
             display: 'flex',
-            flexDirection: 'column', // Texto arriba y botón abajo para ahorrar espacio horizontal
+            flexDirection: 'column',
             alignItems: 'flex-end',
-            gap: '8px'
+            gap: '2px' // Menos espacio entre el texto y el botón
           }}>
 
-            {/* NÚMERO DE TELÉFONO */}
             <div style={{ textAlign: 'right' }}>
               <p style={{ 
-                fontSize: '9px', 
+                fontSize: '8px', // Texto un poco más pequeño
                 color: '#6B7280', 
                 fontWeight: 'bold', 
                 margin: 0, 
@@ -104,7 +104,7 @@ export default function Home() {
               <a 
                 href="tel:+17622440708"
                 style={{ 
-                  fontSize: '14px', // Tamaño reducido
+                  fontSize: '13px', 
                   fontWeight: '900', 
                   color: '#0B2219',
                   textDecoration: 'none',
@@ -115,39 +115,24 @@ export default function Home() {
               </a>
             </div>
 
-            {/* BOTÓN CALL NOW PEQUEÑO */}
             <a 
               href="tel:+17622440708" 
               style={{ 
                 backgroundColor: '#FFB703', 
                 color: '#0B2219', 
-                padding: '8px 16px', // Padding más pequeño
-                borderRadius: '8px', 
+                padding: '6px 14px', // Botón más compacto
+                borderRadius: '6px', 
                 fontWeight: '900', 
-                fontSize: '12px', // Fuente más pequeña
+                fontSize: '11px',
                 textDecoration: 'none',
-                boxShadow: '0 4px 10px rgba(255,183,3,0.2)',
-                whiteSpace: 'nowrap',
-                textAlign: 'center'
+                boxShadow: '0 2px 8px rgba(255,183,3,0.2)',
+                whiteSpace: 'nowrap'
               }}
             >
               CALL NOW
             </a>
           </div>
-
         </div>
-
-        {/* Ajuste responsivo para móviles muy pequeños */}
-        <style>{`
-          @media (max-width: 400px) {
-            img[style*="maxWidth: 350px"] {
-              maxWidth: 220px !important;
-            }
-            a[style*="fontSize: 14px"] {
-              fontSize: 12px !important;
-            }
-          }
-        `}</style>
       </nav>
 
       {/* 2. HERO SECTION */}
