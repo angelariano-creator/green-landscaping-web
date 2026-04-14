@@ -42,106 +42,80 @@ export default function Home() {
   return (
     <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif' }}>
       
-      {/* 1. NAVBAR */}
+      {/* 1. NAVBAR CORREGIDO */}
       <nav style={{ 
         backgroundColor: '#FFFFFF',        
         minHeight: '80px', 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        padding: '15px 20px', 
+        padding: '10px 20px', 
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
         flexWrap: 'wrap', 
-        gap: '10px'
+        gap: '15px'
       }}>
         
-        {/* LOGO AREA */}
-        <div style={{ 
-          position: 'relative', 
-          display: 'flex', 
-          alignItems: 'center', 
-          width: 'auto', 
-          minWidth: '250px', 
-          height: '60px' 
-        }}>
+        {/* LOGO AREA - Ahora sin absolute para que no se encime */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
-            style={{ 
-              height: '80px', 
-              width: 'auto', 
-              position: 'absolute',
-              left: '-10px', 
-              top: '50%',
-              transform: 'translateY(-50%)',
-            }} 
+            style={{ height: '50px', width: 'auto' }} 
           />
           <img 
             src="/Letralogo.png" 
             alt="Green Landscaping" 
-            style={{ 
-              height: '80px', 
-              width: 'auto', 
-              position: 'absolute',
-              left: '55px', 
-              top: '50%',
-              transform: 'translateY(-50%)',
-              filter: 'brightness(0.1)'
-            }} 
+            style={{ height: '40px', width: 'auto', filter: 'brightness(0.1)' }} 
           />
         </div>
 
-        {/* CONTACT & NAV ACTION */}
+        {/* CONTACT & ACTION - Se alinean solos a la derecha */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '15px', 
-          flexWrap: 'wrap', 
-          justifyContent: 'center' 
+          gap: '20px', 
+          flexWrap: 'wrap',
+          justifyContent: 'flex-end'
         }}>
-           <div style={{ textAlign: 'right', marginRight: '10px' }}>
+          <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: '10px', color: '#6B7280', fontWeight: 'bold' }}>FREE ESTIMATE:</div>
-            <div style={{ fontSize: '16px', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
+            <div style={{ fontSize: '14px', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
           </div>
           <button 
             onClick={() => scrollToSection('estimate-section')}
             style={{ 
               backgroundColor: '#FFB703', 
               color: '#0B2219', 
-              padding: '12px 30px', 
-              borderRadius: '10px', 
+              padding: '10px 20px', 
+              borderRadius: '8px', 
               fontWeight: '900', 
-              fontSize: '14px',
+              fontSize: '13px',
               border: 'none',
-              boxShadow: '0 4px 15px rgba(255,183,3,0.3)',
-              cursor: 'pointer',
-              transition: 'transform 0.2s'
+              cursor: 'pointer'
             }}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
             BOOK NOW
           </button>
         </div>
       </nav>
 
-      {/* 2. HERO SECTION */}
-      <section style={{ padding: '30px 20px', backgroundColor: '#F9FAFB' }}>
+      {/* 2. HERO SECTION CORREGIDO */}
+      <section style={{ padding: '20px', backgroundColor: '#F9FAFB' }}>
         <div style={{ 
           position: 'relative', 
           maxWidth: '1400px', 
           margin: '0 auto', 
-          height: '75vh', 
-          borderRadius: '60px', 
+          minHeight: '65vh', // Altura mínima flexible
+          borderRadius: '40px', 
           overflow: 'hidden', 
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'center',
-          border: '12px solid #FFFFFF',
-          boxShadow: '0 30px 60px -12px rgba(0,0,0,0.15)'
+          border: '8px solid #FFFFFF',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
         }}>
           <img 
             src="/premium-garden.png" 
@@ -150,37 +124,43 @@ export default function Home() {
           />
           <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.4)', zIndex: 10 }}></div>
 
-          <div style={{ position: 'relative', zIndex: 20, textAlign: 'center', padding: '20px', maxWidth: '900px' }}>
+          <div style={{ position: 'relative', zIndex: 20, textAlign: 'center', padding: '40px 20px' }}>
             <h1 style={{ 
               color: '#FFFFFF', 
-              fontSize: 'clamp(2rem, 8vw, 4rem)', 
-              lineHeight: '1.1', 
+              fontSize: 'clamp(1.8rem, 6vw, 3.5rem)', 
+              lineHeight: '1.2', 
               marginBottom: '20px',
-              fontWeight: '900',
-              textShadow: '0 4px 20px rgba(0,0,0,0.4)'
+              fontWeight: '900'
             }}>
-              Where <span style={{ color: '#FFB703', fontStyle: 'italic', fontWeight: '400' }}>Memories</span> Grow <br/>
+              Where <span style={{ color: '#FFB703' }}>Memories</span> Grow <br/>
               and Lawns Flourish.
             </h1>
-            <p style={{ color: '#FFFFFF', fontSize: '22px', marginBottom: '40px', opacity: 0.95 }}>
+            <p style={{ color: '#FFFFFF', fontSize: '18px', marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px' }}>
               Your home is your sanctuary. We provide the expert care your landscape deserves.
             </p>
-            <div style={{ display: 'flex', gap: '25px', justifyContent: 'center' }}>
+            
+            {/* Botones responsivos: En móvil se ponen uno bajo el otro */}
+            <div style={{ 
+              display: 'flex', 
+              gap: '15px', 
+              justifyContent: 'center',
+              flexWrap: 'wrap' // Crucial para móvil
+            }}>
               <button 
                 onClick={() => scrollToSection('estimate-section')}
                 style={{ 
-                  backgroundColor: '#FFB703', color: '#0B2219', padding: '20px 45px', 
-                  borderRadius: '18px', fontWeight: '900', fontSize: '18px', 
-                  border: 'none', cursor: 'pointer', boxShadow: '0 10px 25px rgba(255,183,3,0.4)' 
+                  backgroundColor: '#FFB703', color: '#0B2219', padding: '15px 30px', 
+                  borderRadius: '12px', fontWeight: '900', fontSize: '16px', 
+                  border: 'none', cursor: 'pointer', flex: '1', minWidth: '160px'
                 }}>
                 GET ESTIMATE
               </button>
               <button 
                 onClick={() => scrollToSection('projects-section')}
                 style={{ 
-                  backgroundColor: 'transparent', color: '#FFFFFF', padding: '20px 45px', 
-                  borderRadius: '18px', border: '3px solid #FFFFFF', fontWeight: '900', 
-                  fontSize: '18px', backdropFilter: 'blur(5px)', cursor: 'pointer' 
+                  backgroundColor: 'rgba(255,255,255,0.1)', color: '#FFFFFF', padding: '15px 30px', 
+                  borderRadius: '12px', border: '2px solid #FFFFFF', fontWeight: '900', 
+                  fontSize: '16px', backdropFilter: 'blur(5px)', cursor: 'pointer', flex: '1', minWidth: '160px'
                 }}>
                 OUR PROJECTS
               </button>
@@ -188,7 +168,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 3. TRUST BAR */}
       <div style={{ textAlign: 'center', padding: '30px', color: '#6B7280', fontSize: '14px', letterSpacing: '1px', fontWeight: 'bold' }}>
         <span style={{ color: '#FFB703' }}>★★★★★</span> 5-STAR GOOGLE RATING • PROFESSIONAL IRRIGATION & SOD
