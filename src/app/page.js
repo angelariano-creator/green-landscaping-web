@@ -45,59 +45,66 @@ export default function Home() {
       
       {/* 1. NAVBAR */}
       <nav style={{ 
-        backgroundColor: '#FFFFFF', 
-        height: '100px', 
+        backgroundColor: '#FFFFFF',        
+        minHeight: '80px', 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        padding: '0 50px',
+        padding: '15px 20px', 
         position: 'sticky',
         top: 0,
         zIndex: 1000,
         boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-        overflow: 'visible'
+        flexWrap: 'wrap', 
+        gap: '10px'
       }}>
         
         {/* LOGO AREA */}
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', width: '600px', height: '100%' }}>
+        <div style={{ 
+          position: 'relative', 
+          display: 'flex', 
+          alignItems: 'center', 
+          width: 'auto', // Cambiado de 600px a auto
+          minWidth: '250px', 
+          height: '60px' // Reducimos la altura en móvil
+        }}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
             style={{ 
-              height: '145px', 
+              height: '80px', // Logo más pequeño para que quepa
               width: 'auto', 
               position: 'absolute',
               left: '-10px', 
               top: '50%',
               transform: 'translateY(-50%)',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
             }} 
           />
           <img 
             src="/Letralogo.png" 
             alt="Green Landscaping" 
             style={{ 
-              height: '150px', 
+              height: '80px', // Letras más pequeñas
               width: 'auto', 
               position: 'absolute',
-              left: '85px', 
+              left: '55px', // Ajustado para el nuevo tamaño
               top: '50%',
               transform: 'translateY(-50%)',
-              filter: 'brightness(0.1) drop-shadow(0 2px 4px rgba(0,0,0,0.05))'
+              filter: 'brightness(0.1)'
             }} 
           />
         </div>
 
         {/* CONTACT & NAV ACTION */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '35px' }}>
-          <div style={{ textAlign: 'right' }}>
-            <span style={{ color: '#0B2219', opacity: 0.6, fontSize: '10px', fontWeight: '900', display: 'block', letterSpacing: '1px' }}>
-              FREE ESTIMATE:
-            </span>
-            <a href="tel:+17622440708" style={{ color: '#0B2219', fontSize: '20px', fontWeight: '900', textDecoration: 'none' }}>
-              +1 (762) 244-0708
-            </a>
-          </div>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '15px', // Menos espacio entre ellos
+          flexWrap: 'wrap', // Permite que el botón baje si es necesario
+          justifyContent: 'center' 
+        }}>
+          {/* ... resto del código del teléfono y botón ... */}
+        </div>
           <button 
             onClick={() => scrollToSection('estimate-section')}
             style={{ 
