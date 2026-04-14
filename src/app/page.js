@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 
-// 1. COMPONENTE PARA LAS TARJETAS DE PROYECTOS (Cambia fotos automáticamente)
+// 1. COMPONENTE PARA LAS TARJETAS DE PROYECTOS
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3500); // Cambia la imagen cada 3.5 segundos
+    }, 3500);
     return () => clearInterval(timer);
   }, [images.length]);
 
@@ -32,7 +32,6 @@ function ProjectCard({ images, title }) {
 
 export default function Home() {
   
-  // Función para scroll suave reutilizable
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -64,15 +63,15 @@ export default function Home() {
           position: 'relative', 
           display: 'flex', 
           alignItems: 'center', 
-          width: 'auto', // Cambiado de 600px a auto
+          width: 'auto', 
           minWidth: '250px', 
-          height: '60px' // Reducimos la altura en móvil
+          height: '60px' 
         }}>
           <img 
             src="/Imagenlogo.png" 
             alt="Logo Icon" 
             style={{ 
-              height: '80px', // Logo más pequeño para que quepa
+              height: '80px', 
               width: 'auto', 
               position: 'absolute',
               left: '-10px', 
@@ -84,10 +83,10 @@ export default function Home() {
             src="/Letralogo.png" 
             alt="Green Landscaping" 
             style={{ 
-              height: '80px', // Letras más pequeñas
+              height: '80px', 
               width: 'auto', 
               position: 'absolute',
-              left: '55px', // Ajustado para el nuevo tamaño
+              left: '55px', 
               top: '50%',
               transform: 'translateY(-50%)',
               filter: 'brightness(0.1)'
@@ -99,12 +98,14 @@ export default function Home() {
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          gap: '15px', // Menos espacio entre ellos
-          flexWrap: 'wrap', // Permite que el botón baje si es necesario
+          gap: '15px', 
+          flexWrap: 'wrap', 
           justifyContent: 'center' 
         }}>
-          {/* ... resto del código del teléfono y botón ... */}
-        </div>
+           <div style={{ textAlign: 'right', marginRight: '10px' }}>
+            <div style={{ fontSize: '10px', color: '#6B7280', fontWeight: 'bold' }}>FREE ESTIMATE:</div>
+            <div style={{ fontSize: '16px', color: '#0B2219', fontWeight: '900' }}>+1 (762) 244-0708</div>
+          </div>
           <button 
             onClick={() => scrollToSection('estimate-section')}
             style={{ 
@@ -226,19 +227,14 @@ export default function Home() {
             boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
             border: '1px solid #E5E7EB'
           }}>
-
-<form action="https://formspree.io/f/xeevogog" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <form action="https://formspree.io/f/xeevogog" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <input 
                 type="text" name="name" placeholder="Full Name" required 
                 style={inputStyle} 
-                onFocus={(e) => e.target.style.borderColor = '#FFB703'}
-                onBlur={(e) => e.target.style.borderColor = '#D1D5DB'}
               />
               <input 
                 type="email" name="email" placeholder="Email Address" required 
                 style={inputStyle}
-                onFocus={(e) => e.target.style.borderColor = '#FFB703'}
-                onBlur={(e) => e.target.style.borderColor = '#D1D5DB'}
               />
               <input type="tel" name="phone" placeholder="Phone Number" style={inputStyle} />
               <select name="service" style={inputStyle}>
@@ -272,7 +268,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. PROJECTS SECTION CON CARRUSEL DINÁMICO */}
+      {/* 5. PROJECTS SECTION */}
       <section id="projects-section" style={{ padding: '100px 20px', backgroundColor: '#F3F4F6', borderRadius: '60px 60px 0 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', fontSize: '42px', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Our Latest Work</h2>
@@ -285,7 +281,7 @@ export default function Home() {
               />
               <ProjectCard 
                 title="Irrigation Systems" 
-                images={['Irrigation1.JPG', '/Irrigation2.JPG', '/Irrigation3.JPG', '/Irrigation4.JPG']} 
+                images={['/Irrigation1.JPG', '/Irrigation2.JPG', '/Irrigation3.JPG', '/Irrigation4.JPG']} 
               />
               <ProjectCard 
                 title="Landscape Design" 
@@ -299,8 +295,7 @@ export default function Home() {
   );
 }
 
-// --- ESTILOS ADICIONALES ---
-
+// --- ESTILOS ---
 const inputStyle = {
   padding: '15px 20px',
   borderRadius: '12px',
