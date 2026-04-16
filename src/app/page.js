@@ -272,62 +272,65 @@ export default function Home() {
         </section>
       </main>
 
-      {/* 6. PIE DE PÁGINA (FOOTER) RESPONSIVO: LOGO IZQUIERDA + DATOS DERECHA */}
+      {/* 6. PIE DE PÁGINA (FOOTER) INTELIGENTE: LÍNEA EN WEB / COLUMNA EN MÓVIL */}
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
-        padding: '30px 15px 20px 15px', 
-        textAlign: 'left' // Alineación base a la izquierda
+        padding: '30px 20px', 
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
-          <div style={{ 
+          <div className="footer-container" style={{ 
             display: 'flex', 
-            alignItems: 'center', // Centra verticalmente el logo con la columna de texto
-            justifyContent: 'space-between',
+            flexWrap: 'wrap', // Permite el salto de línea en móviles
+            alignItems: 'center',
+            justifyContent: 'space-between', // Espaciado horizontal en web
             gap: '20px', 
-            marginBottom: '25px' 
+            marginBottom: '30px' 
           }}>
             
-            {/* LADO IZQUIERDO: LOGO GRANDE */}
-            <div style={{ flex: '0 0 auto' }}>
+            {/* LOGO: Se mantiene a la izquierda o arriba según el espacio */}
+            <div style={{ flex: '0 0 auto', margin: '0 auto 0 0' }}>
               <img 
                 src="/Logocompleto.png" 
                 alt="Logo" 
                 style={{ 
                   height: 'auto', 
-                  width: 'clamp(100px, 30vw, 150px)', // Logo grande y escalable
+                  width: '130px', 
                   filter: 'brightness(0) invert(1)' 
                 }} 
               />
             </div>
 
-            {/* LADO DERECHO: DATOS EN COLUMNA */}
+            {/* CONTENEDOR DE DATOS: En web se expande horizontalmente, en móvil se apila */}
             <div style={{ 
               display: 'flex', 
-              flexDirection: 'column', 
-              gap: '12px',
+              flexDirection: 'row', 
+              flexWrap: 'wrap', 
+              gap: 'clamp(15px, 3vw, 50px)', 
+              alignItems: 'center',
+              justifyContent: 'flex-end',
               flex: '1'
             }}>
               
               {/* UBICACIÓN */}
-              <div>
+              <div style={{ minWidth: '100px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
-                <p style={{ margin: 0, fontSize: '13px', fontWeight: '500' }}>Atlanta, GA</p>
+                <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>Atlanta, GA</p>
               </div>
 
               {/* TELÉFONO */}
-              <div>
+              <div style={{ minWidth: '140px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
-                <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '15px', fontWeight: '900' }}>
+                <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '16px', fontWeight: '900' }}>
                   +1 (762) 244-0708
                 </a>
               </div>
 
               {/* EMAIL */}
-              <div>
+              <div style={{ minWidth: '150px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
-                <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '12px', fontWeight: '500', wordBreak: 'break-all' }}>
+                <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
                   usalandgl@gmail.com
                 </a>
               </div>
@@ -338,14 +341,29 @@ export default function Home() {
           {/* LÍNEA DE COPYRIGHT */}
           <div style={{ 
             borderTop: '1px solid rgba(255,255,255,0.1)', 
-            paddingTop: '15px', 
+            paddingTop: '20px', 
             fontSize: '10px', 
             color: '#9CA3AF',
             textAlign: 'center'
           }}>
-            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC.
+            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
           </div>
         </div>
+
+        {/* CSS NECESARIO PARA FORZAR LA COLUMNA EN MÓVILES EXTREMOS */}
+        <style jsx>{`
+          @media (max-width: 600px) {
+            .footer-container {
+              flex-direction: row !important;
+              justify-content: space-between !important;
+            }
+            .footer-container > div:last-child {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              gap: 15px !important;
+            }
+          }
+        `}</style>
       </footer>
     </>
   );
