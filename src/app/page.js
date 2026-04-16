@@ -272,64 +272,78 @@ export default function Home() {
         </section>
       </main>
 
-      {/* 6. PIE DE PÁGINA (FOOTER) LINEAL Y RESPONSIVO */}
+      {/* 6. PIE DE PÁGINA (FOOTER) RESPONSIVO: LOGO IZQUIERDA + DATOS DERECHA */}
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
-        padding: '30px 20px', 
-        textAlign: 'center'
+        padding: '30px 15px 20px 15px', 
+        textAlign: 'left' // Alineación base a la izquierda
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
           <div style={{ 
             display: 'flex', 
-            flexDirection: 'row', // Forzar línea horizontal
-            flexWrap: 'wrap',    // Permitir que baje en móviles si no cabe
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 'clamp(20px, 4vw, 60px)', // Espacio flexible entre elementos
-            marginBottom: '30px' 
+            alignItems: 'center', // Centra verticalmente el logo con la columna de texto
+            justifyContent: 'space-between',
+            gap: '20px', 
+            marginBottom: '25px' 
           }}>
             
-            {/* LOGO */}
-            <img 
-              src="/Logocompleto.png" 
-              alt="Logo" 
-              style={{ height: '35px', filter: 'brightness(0) invert(1)' }} 
-            />
-
-            {/* UBICACIÓN */}
-            <div style={{ textAlign: 'left' }}>
-              <h4 style={{ color: '#FFB703', margin: '0 0 2px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
-              <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>Atlanta, GA</p>
+            {/* LADO IZQUIERDO: LOGO GRANDE */}
+            <div style={{ flex: '0 0 auto' }}>
+              <img 
+                src="/Logocompleto.png" 
+                alt="Logo" 
+                style={{ 
+                  height: 'auto', 
+                  width: 'clamp(100px, 30vw, 150px)', // Logo grande y escalable
+                  filter: 'brightness(0) invert(1)' 
+                }} 
+              />
             </div>
 
-            {/* TELÉFONO (DESTACADO) */}
-            <div style={{ textAlign: 'center' }}>
-              <h4 style={{ color: '#FFB703', margin: '0 0 2px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
-              <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '900' }}>
-                +1 (762) 244-0708
-              </a>
-            </div>
+            {/* LADO DERECHO: DATOS EN COLUMNA */}
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '12px',
+              flex: '1'
+            }}>
+              
+              {/* UBICACIÓN */}
+              <div>
+                <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
+                <p style={{ margin: 0, fontSize: '13px', fontWeight: '500' }}>Atlanta, GA</p>
+              </div>
 
-            {/* EMAIL */}
-            <div style={{ textAlign: 'right' }}>
-              <h4 style={{ color: '#FFB703', margin: '0 0 2px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
-              <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
-                usalandgl@gmail.com
-              </a>
-            </div>
+              {/* TELÉFONO */}
+              <div>
+                <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
+                <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '15px', fontWeight: '900' }}>
+                  +1 (762) 244-0708
+                </a>
+              </div>
 
+              {/* EMAIL */}
+              <div>
+                <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
+                <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '12px', fontWeight: '500', wordBreak: 'break-all' }}>
+                  usalandgl@gmail.com
+                </a>
+              </div>
+
+            </div>
           </div>
 
           {/* LÍNEA DE COPYRIGHT */}
           <div style={{ 
             borderTop: '1px solid rgba(255,255,255,0.1)', 
-            paddingTop: '20px', 
-            fontSize: '11px', 
-            color: '#9CA3AF'
+            paddingTop: '15px', 
+            fontSize: '10px', 
+            color: '#9CA3AF',
+            textAlign: 'center'
           }}>
-            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
+            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC.
           </div>
         </div>
       </footer>
