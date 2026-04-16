@@ -275,61 +275,61 @@ export default function Home() {
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
-        padding: '50px 20px 30px 20px', 
+        padding: '30px 20px 20px 20px', // Reducción de padding superior e inferior
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
-          {/* CONTENEDOR DE INFORMACIÓN */}
           <div style={{ 
             display: 'flex', 
-            flexDirection: 'column', // Apilado vertical para móvil
+            flexDirection: 'column', 
             alignItems: 'center',
-            gap: '35px', 
-            marginBottom: '50px' 
+            gap: '20px', // Espacio reducido entre elementos
+            marginBottom: '30px' 
           }}>
             
-            {/* LOGO EN EL FOOTER (Opcional, añade un toque premium) */}
+            {/* LOGO MÁS PEQUEÑO */}
             <img 
               src="/Logocompleto.png" 
               alt="Logo" 
-              style={{ height: '40px', filter: 'brightness(0) invert(1)', marginBottom: '10px' }} 
+              style={{ height: '30px', filter: 'brightness(0) invert(1)', marginBottom: '5px' }} 
             />
 
-            {/* UBICACIÓN */}
-            <div style={{ width: '100%' }}>
-              <h4 style={{ color: '#FFB703', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>Location</h4>
-              <p style={{ margin: 0, fontSize: '18px', fontWeight: '500' }}>Atlanta, GA</p>
-            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
+              
+              {/* FILA COMPACTA: UBICACIÓN Y CORREO */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div>
+                  <h4 style={{ color: '#FFB703', margin: '0 0 4px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
+                  <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>Atlanta, GA</p>
+                </div>
+                <div>
+                  <h4 style={{ color: '#FFB703', margin: '0 0 4px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
+                  <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '11px', fontWeight: '400', wordBreak: 'break-all' }}>
+                    usalandgl@gmail.com
+                  </a>
+                </div>
+              </div>
 
-            {/* TELÉFONO */}
-            <div style={{ width: '100%' }}>
-              <h4 style={{ color: '#FFB703', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>Phone</h4>
-              <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '22px', fontWeight: '900' }}>
-                +1 (762) 244-0708
-              </a>
-            </div>
+              {/* TELÉFONO DESTACADO PERO COMPACTO */}
+              <div>
+                <h4 style={{ color: '#FFB703', margin: '0 0 4px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
+                <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '20px', fontWeight: '900' }}>
+                  +1 (762) 244-0708
+                </a>
+              </div>
 
-            {/* CORREO */}
-            <div style={{ width: '100%' }}>
-              <h4 style={{ color: '#FFB703', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>Email</h4>
-              <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '16px', fontWeight: '400', opacity: 0.9 }}>
-                usalandgl@gmail.com
-              </a>
             </div>
-
           </div>
 
-          {/* LÍNEA FINAL DE COPYRIGHT */}
+          {/* LÍNEA FINAL PEQUEÑA */}
           <div style={{ 
             borderTop: '1px solid rgba(255,255,255,0.1)', 
-            paddingTop: '25px', 
-            fontSize: '11px', 
-            color: '#9CA3AF',
-            lineHeight: '1.5'
+            paddingTop: '15px', 
+            fontSize: '10px', 
+            color: '#9CA3AF'
           }}>
-            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC.<br/>
-            All rights reserved.
+            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC.
           </div>
         </div>
       </footer>
