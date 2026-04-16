@@ -271,9 +271,50 @@ export default function Home() {
       </section>
 
     </main>
+
+    {/* AQUÍ VA EL PIE DE PÁGINA (FOOTER) */}
+    <footer style={{ 
+      backgroundColor: '#0B2219', 
+      color: '#FFFFFF', 
+      padding: '60px 20px 30px 20px', 
+      textAlign: 'center'
+    }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '40px', marginBottom: '40px' }}>
+          
+          {/* CIUDAD */}
+          <div>
+            <h4 style={{ color: '#FFB703', margin: '0 0 10px 0', fontSize: '14px', textTransform: 'uppercase' }}>Location</h4>
+            <p style={{ margin: 0, fontSize: '18px', fontWeight: '500' }}>Atlanta, GA</p>
+          </div>
+
+          {/* TELÉFONO */}
+          <div>
+            <h4 style={{ color: '#FFB703', margin: '0 0 10px 0', fontSize: '14px', textTransform: 'uppercase' }}>Phone</h4>
+            <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '900' }}>
+              +1 (762) 244-0708
+            </a>
+          </div>
+
+          {/* CORREO */}
+          <div>
+            <h4 style={{ color: '#FFB703', margin: '0 0 10px 0', fontSize: '14px', textTransform: 'uppercase' }}>Email</h4>
+            <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '500' }}>
+              usalandgl@gmail.com
+            </a>
+          </div>
+
+        </div>
+
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', fontSize: '12px', color: '#9CA3AF' }}>
+          © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
   );
 }
-
 // --- ESTILOS ---
 const inputStyle = {
   padding: '15px',
