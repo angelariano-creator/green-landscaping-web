@@ -275,30 +275,61 @@ export default function Home() {
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
-        padding: '60px 20px 30px 20px', 
+        padding: '50px 20px 30px 20px', 
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '40px', marginBottom: '40px' }}>
-            <div>
-              <h4 style={{ color: '#FFB703', margin: '0 0 10px 0', fontSize: '14px', textTransform: 'uppercase' }}>Location</h4>
+          
+          {/* CONTENEDOR DE INFORMACIÓN */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', // Apilado vertical para móvil
+            alignItems: 'center',
+            gap: '35px', 
+            marginBottom: '50px' 
+          }}>
+            
+            {/* LOGO EN EL FOOTER (Opcional, añade un toque premium) */}
+            <img 
+              src="/Logocompleto.png" 
+              alt="Logo" 
+              style={{ height: '40px', filter: 'brightness(0) invert(1)', marginBottom: '10px' }} 
+            />
+
+            {/* UBICACIÓN */}
+            <div style={{ width: '100%' }}>
+              <h4 style={{ color: '#FFB703', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>Location</h4>
               <p style={{ margin: 0, fontSize: '18px', fontWeight: '500' }}>Atlanta, GA</p>
             </div>
-            <div>
-              <h4 style={{ color: '#FFB703', margin: '0 0 10px 0', fontSize: '14px', textTransform: 'uppercase' }}>Phone</h4>
-              <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '900' }}>
+
+            {/* TELÉFONO */}
+            <div style={{ width: '100%' }}>
+              <h4 style={{ color: '#FFB703', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>Phone</h4>
+              <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '22px', fontWeight: '900' }}>
                 +1 (762) 244-0708
               </a>
             </div>
-            <div>
-              <h4 style={{ color: '#FFB703', margin: '0 0 10px 0', fontSize: '14px', textTransform: 'uppercase' }}>Email</h4>
-              <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '500' }}>
+
+            {/* CORREO */}
+            <div style={{ width: '100%' }}>
+              <h4 style={{ color: '#FFB703', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>Email</h4>
+              <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '16px', fontWeight: '400', opacity: 0.9 }}>
                 usalandgl@gmail.com
               </a>
             </div>
+
           </div>
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', fontSize: '12px', color: '#9CA3AF' }}>
-            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
+
+          {/* LÍNEA FINAL DE COPYRIGHT */}
+          <div style={{ 
+            borderTop: '1px solid rgba(255,255,255,0.1)', 
+            paddingTop: '25px', 
+            fontSize: '11px', 
+            color: '#9CA3AF',
+            lineHeight: '1.5'
+          }}>
+            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC.<br/>
+            All rights reserved.
           </div>
         </div>
       </footer>
