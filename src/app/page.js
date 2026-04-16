@@ -272,64 +272,64 @@ export default function Home() {
         </section>
       </main>
 
+      {/* 6. PIE DE PÁGINA (FOOTER) LINEAL Y RESPONSIVO */}
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
-        padding: '30px 20px 20px 20px', // Reducción de padding superior e inferior
+        padding: '30px 20px', 
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
           <div style={{ 
             display: 'flex', 
-            flexDirection: 'column', 
+            flexDirection: 'row', // Forzar línea horizontal
+            flexWrap: 'wrap',    // Permitir que baje en móviles si no cabe
             alignItems: 'center',
-            gap: '20px', // Espacio reducido entre elementos
+            justifyContent: 'center',
+            gap: 'clamp(20px, 4vw, 60px)', // Espacio flexible entre elementos
             marginBottom: '30px' 
           }}>
             
-            {/* LOGO MÁS PEQUEÑO */}
+            {/* LOGO */}
             <img 
               src="/Logocompleto.png" 
               alt="Logo" 
-              style={{ height: '30px', filter: 'brightness(0) invert(1)', marginBottom: '5px' }} 
+              style={{ height: '35px', filter: 'brightness(0) invert(1)' }} 
             />
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
-              
-              {/* FILA COMPACTA: UBICACIÓN Y CORREO */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                <div>
-                  <h4 style={{ color: '#FFB703', margin: '0 0 4px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
-                  <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>Atlanta, GA</p>
-                </div>
-                <div>
-                  <h4 style={{ color: '#FFB703', margin: '0 0 4px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
-                  <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '11px', fontWeight: '400', wordBreak: 'break-all' }}>
-                    usalandgl@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              {/* TELÉFONO DESTACADO PERO COMPACTO */}
-              <div>
-                <h4 style={{ color: '#FFB703', margin: '0 0 4px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
-                <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '20px', fontWeight: '900' }}>
-                  +1 (762) 244-0708
-                </a>
-              </div>
-
+            {/* UBICACIÓN */}
+            <div style={{ textAlign: 'left' }}>
+              <h4 style={{ color: '#FFB703', margin: '0 0 2px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
+              <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>Atlanta, GA</p>
             </div>
+
+            {/* TELÉFONO (DESTACADO) */}
+            <div style={{ textAlign: 'center' }}>
+              <h4 style={{ color: '#FFB703', margin: '0 0 2px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
+              <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '18px', fontWeight: '900' }}>
+                +1 (762) 244-0708
+              </a>
+            </div>
+
+            {/* EMAIL */}
+            <div style={{ textAlign: 'right' }}>
+              <h4 style={{ color: '#FFB703', margin: '0 0 2px 0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
+              <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
+                usalandgl@gmail.com
+              </a>
+            </div>
+
           </div>
 
-          {/* LÍNEA FINAL PEQUEÑA */}
+          {/* LÍNEA DE COPYRIGHT */}
           <div style={{ 
             borderTop: '1px solid rgba(255,255,255,0.1)', 
-            paddingTop: '15px', 
-            fontSize: '10px', 
+            paddingTop: '20px', 
+            fontSize: '11px', 
             color: '#9CA3AF'
           }}>
-            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC.
+            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
           </div>
         </div>
       </footer>
