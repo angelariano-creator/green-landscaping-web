@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
-  // Corrección para hidratación
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -45,7 +44,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Corrección para Hydration Mismatch en estilos */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 600px) {
           .footer-container {
@@ -92,7 +90,7 @@ export default function Home() {
             >
               <img 
                 src="/Logocompleto.png" 
-                alt="Green Landscaping and Irrigation LLC" 
+                alt="Green Landscaping & Irrigation LLC" 
                 style={{ 
                   height: 'auto',
                   width: 'clamp(180px, 25vw, 280px)',
