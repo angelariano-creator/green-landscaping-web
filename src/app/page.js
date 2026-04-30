@@ -199,7 +199,7 @@ export default function Home() {
 
         {/* 3. TRUST BAR */}
         <div style={{ textAlign: 'center', padding: '25px 10px', color: '#6B7280', fontSize: 'clamp(11px, 2vw, 14px)', letterSpacing: '1px', fontWeight: 'bold' }}>
-          <span style={{ color: '#FFB703' }}>★★★★★</span> 5-STAR GOOGLE RATING • PROFESSIONAL IRRIGATION & SOD
+          <span style={{ color: '#FFB703' }}>★★★★★</span> PROFESSIONAL IRRIGATION & SOD SERVICES
         </div>
 
         {/* 4. GET ESTIMATE SECTION */}
@@ -270,9 +270,48 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* 6. REVIEWS SECTION (EMPTY STATE) */}
+        <section style={{ padding: '80px 20px', backgroundColor: '#FFFFFF' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{ textAlign: 'center', fontSize: 'clamp(30px, 5vw, 42px)', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Customer Opinions</h2>
+            <p style={{ textAlign: 'center', color: '#6B7280', marginBottom: '40px', fontSize: '17px' }}>Your feedback helps us grow. Share your experience with us!</p>
+
+            <div style={{ 
+              backgroundColor: '#0B2219', 
+              padding: '40px', 
+              borderRadius: '40px', 
+              boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
+            }}>
+              <h3 style={{ color: '#FFFFFF', textAlign: 'center', fontSize: '24px', fontWeight: '900', marginBottom: '25px' }}>Leave a Review</h3>
+              <form action="https://formspree.io/f/xeevogog" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <input type="hidden" name="_subject" value="New Service Review Submission" />
+                <input type="text" name="reviewer_name" placeholder="Your Name" required style={inputStyle} />
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <label style={{ color: '#FFFFFF', fontWeight: 'bold' }}>Rating:</label>
+                  <select name="rating" style={{ ...inputStyle, padding: '10px' }}>
+                    <option value="5">5 Stars ★★★★★</option>
+                    <option value="4">4 Stars ★★★★</option>
+                    <option value="3">3 Stars ★★★</option>
+                    <option value="2">2 Stars ★★</option>
+                    <option value="1">1 Star ★</option>
+                  </select>
+                </div>
+
+                <textarea name="review_text" placeholder="Tell others what you thought of our work..." rows="3" required style={inputStyle}></textarea>
+                
+                <button type="submit" style={{ ...submitButtonStyle, backgroundColor: '#FFB703', color: '#0B2219', marginTop: '10px' }}>
+                  POST REVIEW
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
       </main>
 
-      {/* 6. PIE DE PÁGINA (FOOTER) INTELIGENTE: LÍNEA EN WEB / COLUMNA EN MÓVIL */}
+      {/* 7. FOOTER */}
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
@@ -282,14 +321,13 @@ export default function Home() {
           
           <div className="footer-container" style={{ 
             display: 'flex', 
-            flexWrap: 'wrap', // Permite el salto de línea en móviles
+            flexWrap: 'wrap', 
             alignItems: 'center',
-            justifyContent: 'space-between', // Espaciado horizontal en web
+            justifyContent: 'space-between', 
             gap: '20px', 
             marginBottom: '30px' 
           }}>
             
-            {/* LOGO: Se mantiene a la izquierda o arriba según el espacio */}
             <div style={{ flex: '0 0 auto', margin: '0 auto 0 0' }}>
               <img 
                 src="/Logocompleto.png" 
@@ -302,7 +340,6 @@ export default function Home() {
               />
             </div>
 
-            {/* CONTENEDOR DE DATOS: En web se expande horizontalmente, en móvil se apila */}
             <div style={{ 
               display: 'flex', 
               flexDirection: 'row', 
@@ -313,13 +350,11 @@ export default function Home() {
               flex: '1'
             }}>
               
-              {/* UBICACIÓN */}
               <div style={{ minWidth: '100px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Location</h4>
                 <p style={{ margin: 0, fontSize: '14px', fontWeight: '500' }}>Atlanta, GA</p>
               </div>
 
-              {/* TELÉFONO */}
               <div style={{ minWidth: '140px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
                 <a href="tel:+17622440708" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '16px', fontWeight: '900' }}>
@@ -327,7 +362,6 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* EMAIL */}
               <div style={{ minWidth: '150px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
                 <a href="mailto:info@greenlandgl.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
@@ -338,7 +372,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* LÍNEA DE COPYRIGHT */}
           <div style={{ 
             borderTop: '1px solid rgba(255,255,255,0.1)', 
             paddingTop: '20px', 
@@ -350,7 +383,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CSS NECESARIO PARA FORZAR LA COLUMNA EN MÓVILES EXTREMOS */}
         <style jsx>{`
           @media (max-width: 600px) {
             .footer-container {
@@ -369,7 +401,7 @@ export default function Home() {
   );
 }
 
-// --- ESTILOS ---
+// --- ESTILOS COMPARTIDOS ---
 const inputStyle = {
   padding: '15px',
   borderRadius: '12px',
