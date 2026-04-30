@@ -2,8 +2,20 @@
 import React, { useState } from 'react';
 
 export default function PromoLanding() {
-  const [submitted, setSubmitted] = useState(false);
 
+  const [reviews, setReviews] = useState([
+    { name: "John D.", rating: 5, comment: "Excellent service! My garden in Buckhead looks amazing." },
+    { name: "Sarah M.", rating: 5, comment: "Very professional team and high-quality irrigation system." }
+  ]);
+  const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    setReviews([newReview, ...reviews]);
+    setNewReview({ name: '', rating: 5, comment: '' });
+    alert("Thank you for your review!");
+  };
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Simulación de envío
@@ -107,7 +119,47 @@ export default function PromoLanding() {
           )}
         </div>
       </section>
+      {/* --- NUEVA SECCIÓN DE REVIEWS --- */}
+      <section style={{ padding: '60px 20px', maxWidth: '800px', margin: '0 auto' }}>
+        <h2 style={{ textAlign: 'center', fontSize: '28px', marginBottom: '30px' }}>What our clients say</h2>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '50px' }}>
+          {reviews.map((rev, index) => (
+            <div key={index} style={{ backgroundColor: '#163a2c', padding: '20px', borderRadius: '15px', borderLeft: '5px solid #FFB703' }}>
+              <div style={{ color: '#FFB703', marginBottom: '10px' }}>{"★".repeat(rev.rating)}</div>
+              <p style={{ fontStyle: 'italic', fontSize: '15px', marginBottom: '10px' }}>"{rev.comment}"</p>
+              <p style={{ fontWeight: 'bold', fontSize: '14px', opacity: 0.8 }}>— {rev.name}</p>
+            </div>
+          ))}
+        </div>
 
+        <div style={{ backgroundColor: '#FFFFFF', borderRadius: '20px', padding: '30px', color: '#0B2219' }}>
+          <h3 style={{ marginBottom: '20px', textAlign: 'center' }}>Leave your review & recommendations</h3>
+          <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <input 
+              type="text" placeholder="Your Name" required value={newReview.name}
+              onChange={(e) => setNewReview({...newReview, name: e.target.value})}
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #CCC', boxSizing: 'border-box' }}
+            />
+            <select 
+              value={newReview.rating}
+              onChange={(e) => setNewReview({...newReview, rating: parseInt(e.target.value)})}
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #CCC' }}
+            >
+              <option value="5">5 Stars ★★★★★</option>
+              <option value="4">4 Stars ★★★★</option>
+            </select>
+            <textarea 
+              placeholder="Your recommendation..." required rows="4" value={newReview.comment}
+              onChange={(e) => setNewReview({...newReview, comment: e.target.value})}
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #CCC', boxSizing: 'border-box', fontFamily: 'inherit' }}
+            ></textarea>
+            <button type="submit" style={{ backgroundColor: '#0B2219', color: '#FFF', padding: '15px', borderRadius: '8px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>
+              POST REVIEW
+            </button>
+          </form>
+        </div>
+      </section>  
       {/* FOOTER */}
       <footer style={{ marginTop: '50px', textAlign: 'center' }}>
         <a href="tel:+17622440708" style={{ color: '#FFB703', textDecoration: 'none', fontWeight: '800', fontSize: '20px' }}>
