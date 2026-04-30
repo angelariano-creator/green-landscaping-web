@@ -3,13 +3,18 @@ import React, { useState, useEffect } from 'react';
 
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
+  // Corrección para hidratación
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3500);
     return () => clearInterval(timer);
   }, [images.length]);
+
+  if (!mounted) return <div style={cardStyle}></div>;
 
   return (
     <div style={cardStyle}>
@@ -40,6 +45,21 @@ export default function Home() {
 
   return (
     <>
+      {/* Corrección para Hydration Mismatch en estilos */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 600px) {
+          .footer-container {
+            flex-direction: row !important;
+            justify-content: space-between !important;
+          }
+          .footer-container > div:last-child {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 15px !important;
+          }
+        }
+      `}} />
+
       <main style={{ backgroundColor: '#FFFFFF', minHeight: '100vh', margin: 0, padding: 0, fontFamily: 'sans-serif', overflowX: 'hidden' }}>      
         <nav style={{ 
           backgroundColor: '#FFFFFF',
@@ -61,7 +81,6 @@ export default function Home() {
             gap: '15px'
           }}>
 
-            {/* LADO IZQUIERDO: LOGO GRANDE */}
             <div 
               onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
               style={{ 
@@ -83,7 +102,6 @@ export default function Home() {
               />
             </div>
 
-            {/* LADO DERECHO: DATOS PEQUEÑOS */}
             <div style={{ 
               display: 'flex',
               flexDirection: 'column',
@@ -136,7 +154,6 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* 2. HERO SECTION */}
         <section style={{ padding: 'clamp(10px, 3vw, 20px)', backgroundColor: '#F9FAFB' }}>
           <div style={{ 
             position: 'relative', 
@@ -197,12 +214,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3. TRUST BAR */}
         <div style={{ textAlign: 'center', padding: '25px 10px', color: '#6B7280', fontSize: 'clamp(11px, 2vw, 14px)', letterSpacing: '1px', fontWeight: 'bold' }}>
           <span style={{ color: '#FFB703' }}>★★★★★</span> PROFESSIONAL IRRIGATION & SOD SERVICES
         </div>
 
-        {/* 4. GET ESTIMATE SECTION */}
         <section id="estimate-section" style={{ padding: 'clamp(40px, 8vw, 80px) 20px', backgroundColor: '#FFFFFF' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
             
@@ -257,7 +272,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. PROJECTS SECTION */}
         <section id="projects-section" style={{ padding: 'clamp(40px, 8vw, 100px) 20px', backgroundColor: '#F3F4F6', borderRadius: '60px 60px 0 0' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <h2 style={{ textAlign: 'center', fontSize: 'clamp(30px, 5vw, 42px)', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Our Latest Work</h2>
@@ -271,7 +285,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. REVIEWS SECTION (EMPTY STATE) */}
         <section style={{ padding: '80px 20px', backgroundColor: '#FFFFFF' }}>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ textAlign: 'center', fontSize: 'clamp(30px, 5vw, 42px)', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Customer Opinions</h2>
@@ -311,7 +324,6 @@ export default function Home() {
 
       </main>
 
-      {/* 7. FOOTER */}
       <footer style={{ 
         backgroundColor: '#0B2219', 
         color: '#FFFFFF', 
@@ -382,26 +394,11 @@ export default function Home() {
             © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
           </div>
         </div>
-
-        <style jsx>{`
-          @media (max-width: 600px) {
-            .footer-container {
-              flex-direction: row !important;
-              justify-content: space-between !important;
-            }
-            .footer-container > div:last-child {
-              flex-direction: column !important;
-              align-items: flex-start !important;
-              gap: 15px !important;
-            }
-          }
-        `}</style>
       </footer>
     </>
   );
 }
 
-// --- ESTILOS COMPARTIDOS ---
 const inputStyle = {
   padding: '15px',
   borderRadius: '12px',
