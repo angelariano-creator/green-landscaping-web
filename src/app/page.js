@@ -330,8 +330,8 @@ export default function Home() {
               {/* EMAIL */}
               <div style={{ minWidth: '150px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
-                <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
-                  usalandgl@gmail.com
+                <a href="mailto:info@greenlandgl.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
+                  info@greenlandgl.com
                 </a>
               </div>
 
