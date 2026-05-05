@@ -35,6 +35,8 @@ function ProjectCard({ images, title }) {
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
+  // Estado para el año (evita error de hidratación)
+  const [currentYear, setCurrentYear] = useState("");
   
   // ESTADOS PARA REVIEWS
   const [reviews, setReviews] = useState([
@@ -43,6 +45,10 @@ export default function Home() {
   ]);
   const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString());
+  }, []);
 
   const scrollToSection = (id) => {
     if (typeof document !== 'undefined') {
@@ -444,7 +450,7 @@ export default function Home() {
             color: '#9CA3AF',
             textAlign: 'center'
           }}>
-            © {new Date().getFullYear()} Green Landscaping & Irrigation LLC. All rights reserved.
+            © {currentYear || '2026'} Green Landscaping & Irrigation LLC. All rights reserved.
           </div>
         </div>
       </footer>
