@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
-  // CORRECCIÓN 1: Estado para evitar error de hidratación
+  // FIX: Estado para evitar el error de hidratación de la imagen 1
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function ProjectCard({ images, title }) {
     return () => clearInterval(timer);
   }, [images.length]);
 
-  // Si no ha montado en el cliente, mostramos el contenedor vacío para que coincida con el servidor
+  // Si no ha montado en el cliente, mostramos el contenedor base
   if (!mounted) return <div style={cardStyle}></div>;
 
   return (
@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <>
-      {/* CORRECCIÓN 2: Inyección de CSS segura para Vercel */}
+      {/* FIX: Inyección de CSS compatible con el motor de Vercel */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 600px) {
           .footer-container {
@@ -83,7 +83,6 @@ export default function Home() {
           }}>
 
             <div 
-              // CORRECCIÓN 3: Scroll seguro
               onClick={() => typeof window !== 'undefined' && window.scrollTo({top: 0, behavior: 'smooth'})}
               style={{ 
                 flex: '1 1 auto', 
@@ -217,7 +216,7 @@ export default function Home() {
         </section>
 
         <div style={{ textAlign: 'center', padding: '25px 10px', color: '#6B7280', fontSize: 'clamp(11px, 2vw, 14px)', letterSpacing: '1px', fontWeight: 'bold' }}>
-          <span style={{ color: '#FFB703' }}>★★★★★</span> 5-STAR GOOGLE RATING • PROFESSIONAL IRRIGATION & SOD
+          <span style={{ color: '#FFB703' }}>★★★★★</span> PROFESSIONAL IRRIGATION & SOD SERVICES
         </div>
 
         <section id="estimate-section" style={{ padding: 'clamp(40px, 8vw, 80px) 20px', backgroundColor: '#FFFFFF' }}>
