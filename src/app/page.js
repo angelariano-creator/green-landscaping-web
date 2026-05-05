@@ -450,7 +450,7 @@ export default function Home() {
             color: '#9CA3AF',
             textAlign: 'center'
           }}>
-            © {currentYear || '2026'} Green Landscaping & Irrigation LLC. All rights reserved.
+            © {currentYear || '2026'} Green Landscaping & Irrigation LLC. All rights reserved
           </div>
         </div>
       </footer>
