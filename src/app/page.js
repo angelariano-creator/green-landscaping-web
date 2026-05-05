@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
-  // FIX: Estado para evitar el error de hidratación de la imagen 1
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ function ProjectCard({ images, title }) {
     return () => clearInterval(timer);
   }, [images.length]);
 
-  // Si no ha montado en el cliente, mostramos el contenedor base
   if (!mounted) return <div style={cardStyle}></div>;
 
   return (
@@ -36,27 +34,50 @@ function ProjectCard({ images, title }) {
 }
 
 export default function Home() {
+  const [submitted, setSubmitted] = useState(false);
   
+  // ESTADOS PARA REVIEWS
+  const [reviews, setReviews] = useState([
+    { name: "John D.", rating: 5, comment: "Excellent irrigation service. My lawn has never looked better!" },
+    { name: "Sarah M.", rating: 5, comment: "Fast and professional sod installation. Highly recommended." }
+  ]);
+  const [newReview, setNewReview] = useState({ name: '', rating: 5, comment: '' });
+  const [reviewSubmitted, setReviewSubmitted] = useState(false);
+
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (typeof document !== 'undefined') {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+  };
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    setReviews([newReview, ...reviews]);
+    setReviewSubmitted(true);
+    setNewReview({ name: '', rating: 5, comment: '' });
+    setTimeout(() => setReviewSubmitted(false), 5000);
   };
 
   return (
     <>
-      {/* FIX: Inyección de CSS compatible con el motor de Vercel */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 600px) {
           .footer-container {
-            flex-direction: row !important;
-            justify-content: space-between !important;
-          }
-          .footer-container > div:last-child {
             flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 15px !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .footer-data-container {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 20px !important;
+            width: 100% !important;
+          }
+          .split-section {
+            grid-template-columns: 1fr !important;
           }
         }
       `}} />
@@ -150,7 +171,6 @@ export default function Home() {
               >
                 CALL NOW
               </a>
-
             </div>
           </div>
         </nav>
@@ -253,22 +273,29 @@ export default function Home() {
               border: '1px solid #E5E7EB',
               margin: '0 auto'
             }}>
-              <form action="https://formspree.io/f/xeevogog" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <input type="text" name="name" placeholder="Full Name" required style={inputStyle} />
-                <input type="email" name="email" placeholder="Email Address" required style={inputStyle} />
-                <input type="tel" name="phone" placeholder="Phone Number" style={inputStyle} />
-                <select name="service" style={inputStyle}>
-                  <option value="">Select Service</option>
-                  <option value="irrigation">Irrigation System</option>
-                  <option value="sod">Sod Installation</option>
-                  <option value="maintenance">Lawn Maintenance</option>
-                  <option value="design">Landscape Design</option>
-                </select>
-                <textarea name="message" placeholder="Tell us about your project..." rows="3" style={inputStyle}></textarea>
-                <button type="submit" style={submitButtonStyle}>
-                  SEND REQUEST
-                </button>
-              </form>
+              {submitted ? (
+                <div style={{ textAlign: 'center', padding: '40px' }}>
+                  <h3 style={{ color: '#0B2219', fontWeight: '900' }}>Thank you!</h3>
+                  <p>We have received your request and will contact you soon.</p>
+                </div>
+              ) : (
+                <form action="https://formspree.io/f/xeevogog" method="POST" onSubmit={() => setSubmitted(true)} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <input type="text" name="name" placeholder="Full Name" required style={inputStyle} />
+                  <input type="email" name="email" placeholder="Email Address" required style={inputStyle} />
+                  <input type="tel" name="phone" placeholder="Phone Number" style={inputStyle} />
+                  <select name="service" style={inputStyle}>
+                    <option value="">Select Service</option>
+                    <option value="irrigation">Irrigation System</option>
+                    <option value="sod">Sod Installation</option>
+                    <option value="maintenance">Lawn Maintenance</option>
+                    <option value="design">Landscape Design</option>
+                  </select>
+                  <textarea name="message" placeholder="Tell us about your project..." rows="3" style={inputStyle}></textarea>
+                  <button type="submit" style={submitButtonStyle}>
+                    SEND REQUEST
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </section>
@@ -283,6 +310,70 @@ export default function Home() {
                 <ProjectCard title="Irrigation Systems" images={['/Irrigation1.JPG', '/Irrigation2.JPG', '/Irrigation3.JPG', '/Irrigation4.JPG']} />
                 <ProjectCard title="Landscape Design" images={['/Land1.JPG', '/Land2.JPG', '/Imagen2.JPG', '/Land3.JPG']} />
             </div>
+          </div>
+        </section>
+
+        {/* --- SECCIÓN DIVIDIDA: REVIEWS & BLOG TIPS --- */}
+        <section style={{ padding: '60px 20px', backgroundColor: '#FFFFFF' }}>
+          <div className="split-section" style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '40px' }}>
+            
+            {/* LADO IZQUIERDO: REVIEWS */}
+            <div>
+              <h2 style={{ fontSize: '28px', color: '#0B2219', fontWeight: '900', marginBottom: '25px' }}>Client Reviews</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '30px' }}>
+                {reviews.slice(0, 3).map((rev, i) => (
+                  <div key={i} style={reviewCardStyle}>
+                    <div style={{ color: '#FFB703', marginBottom: '5px' }}>{"★".repeat(rev.rating)}</div>
+                    <p style={{ fontStyle: 'italic', color: '#4B5563', fontSize: '14px' }}>"{rev.comment}"</p>
+                    <p style={{ fontWeight: 'bold', marginTop: '10px', fontSize: '14px' }}>- {rev.name}</p>
+                  </div>
+                ))}
+              </div>
+              <div style={reviewFormWrapperStyle}>
+                <h3 style={{ marginBottom: '15px', fontWeight: '900', fontSize: '18px' }}>Leave a Review</h3>
+                {reviewSubmitted ? (
+                  <p style={{ color: '#059669', fontWeight: 'bold' }}>Thanks for your feedback!</p>
+                ) : (
+                  <form onSubmit={handleReviewSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                      <input type="text" placeholder="Name" required style={{...inputStyle, padding: '10px'}} value={newReview.name} onChange={(e) => setNewReview({...newReview, name: e.target.value})} />
+                      <select style={{...inputStyle, padding: '10px', width: 'auto'}} value={newReview.rating} onChange={(e) => setNewReview({...newReview, rating: parseInt(e.target.value)})}>
+                        <option value="5">5 ★</option>
+                        <option value="4">4 ★</option>
+                      </select>
+                    </div>
+                    <textarea placeholder="Experience..." required style={{...inputStyle, padding: '10px'}} rows="2" value={newReview.comment} onChange={(e) => setNewReview({...newReview, comment: e.target.value})}></textarea>
+                    <button type="submit" style={{...submitButtonStyle, padding: '10px'}}>POST</button>
+                  </form>
+                )}
+              </div>
+            </div>
+
+            {/* LADO DERECHO: BLOG TIPS */}
+            <div style={{ backgroundColor: '#F3F4F6', padding: '30px', borderRadius: '30px', alignSelf: 'start' }}>
+              <h2 style={{ fontSize: '24px', color: '#0B2219', fontWeight: '900', marginBottom: '20px' }}>Pro Tips of the Week</h2>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={blogCardStyle}>
+                  <span style={blogTagStyle}>Watering</span>
+                  <h4 style={blogTitleStyle}>Best Time to Water</h4>
+                  <p style={blogTextStyle}>Water your lawn between 4 AM and 10 AM to reduce evaporation and fungal growth.</p>
+                </div>
+
+                <div style={blogCardStyle}>
+                  <span style={blogTagStyle}>Mowing</span>
+                  <h4 style={blogTitleStyle}>The One-Third Rule</h4>
+                  <p style={blogTextStyle}>Never cut more than 1/3 of the grass blade at once to keep the roots strong and healthy.</p>
+                </div>
+
+                <div style={blogCardStyle}>
+                  <span style={blogTagStyle}>Sod Care</span>
+                  <h4 style={blogTitleStyle}>New Sod Maintenance</h4>
+                  <p style={blogTextStyle}>Keep new sod moist for the first 2 weeks. Avoid heavy foot traffic until it takes root.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
       </main>
@@ -315,7 +406,7 @@ export default function Home() {
               />
             </div>
 
-            <div style={{ 
+            <div className="footer-data-container" style={{ 
               display: 'flex', 
               flexDirection: 'row', 
               flexWrap: 'wrap', 
@@ -343,7 +434,6 @@ export default function Home() {
                   usalandgl@gmail.com
                 </a>
               </div>
-
             </div>
           </div>
 
@@ -363,58 +453,16 @@ export default function Home() {
 }
 
 // --- ESTILOS ---
-const inputStyle = {
-  padding: '15px',
-  borderRadius: '12px',
-  border: '1px solid #D1D5DB',
-  fontSize: '16px',
-  outline: 'none',
-  width: '100%',
-  boxSizing: 'border-box',
-  backgroundColor: '#FFFFFF',
-  fontFamily: 'sans-serif'
-};
+const inputStyle = { padding: '15px', borderRadius: '12px', border: '1px solid #D1D5DB', fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box', backgroundColor: '#FFFFFF', fontFamily: 'sans-serif' };
+const submitButtonStyle = { backgroundColor: '#0B2219', color: '#FFFFFF', padding: '18px', borderRadius: '12px', fontWeight: '900', fontSize: '16px', border: 'none', cursor: 'pointer', marginTop: '10px' };
+const cardStyle = { height: 'clamp(300px, 40vh, 400px)', backgroundColor: '#FFFFFF', borderRadius: '30px', overflow: 'hidden', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' };
+const imageStyle = { width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 1s ease-in-out', position: 'absolute', inset: 0 };
+const badgeStyle = { position: 'absolute', bottom: '20px', left: '20px', backgroundColor: '#FFFFFF', color: '#0B2219', padding: '10px 20px', borderRadius: '12px', fontWeight: '900', fontSize: '14px', boxShadow: '0 4px 10px rgba(0,0,0,0.1)', zIndex: 30 };
 
-const submitButtonStyle = {
-  backgroundColor: '#0B2219', 
-  color: '#FFFFFF', 
-  padding: '18px', 
-  borderRadius: '12px', 
-  fontWeight: '900', 
-  fontSize: '16px', 
-  border: 'none', 
-  cursor: 'pointer',
-  marginTop: '10px'
-};
+const reviewCardStyle = { backgroundColor: '#F9FAFB', padding: '15px', borderRadius: '15px', border: '1px solid #E5E7EB' };
+const reviewFormWrapperStyle = { backgroundColor: '#F3F4F6', padding: '20px', borderRadius: '20px', border: '1px solid #D1D5DB' };
 
-const cardStyle = {
-  height: 'clamp(300px, 40vh, 400px)',
-  backgroundColor: '#FFFFFF',
-  borderRadius: '30px',
-  overflow: 'hidden',
-  position: 'relative',
-  boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-};
-
-const imageStyle = {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  transition: 'opacity 1s ease-in-out',
-  position: 'absolute',
-  inset: 0
-};
-
-const badgeStyle = {
-  position: 'absolute',
-  bottom: '20px',
-  left: '20px',
-  backgroundColor: '#FFFFFF',
-  color: '#0B2219',
-  padding: '10px 20px',
-  borderRadius: '12px',
-  fontWeight: '900',
-  fontSize: '14px',
-  boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-  zIndex: 30
-};
+const blogCardStyle = { backgroundColor: '#FFFFFF', padding: '15px', borderRadius: '15px', boxShadow: '0 4px 10px rgba(0,0,0,0.03)' };
+const blogTagStyle = { backgroundColor: '#FFB703', color: '#0B2219', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase' };
+const blogTitleStyle = { margin: '8px 0 5px 0', fontSize: '16px', fontWeight: '900', color: '#0B2219' };
+const blogTextStyle = { margin: 0, fontSize: '13px', color: '#4B5563', lineHeight: '1.4' };
