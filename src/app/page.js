@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 function ProjectCard({ images, title }) {
   const [index, setIndex] = useState(0);
+  // CORRECCIÓN 1: Estado para evitar error de hidratación
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ function ProjectCard({ images, title }) {
     return () => clearInterval(timer);
   }, [images.length]);
 
+  // Si no ha montado en el cliente, mostramos el contenedor vacío para que coincida con el servidor
   if (!mounted) return <div style={cardStyle}></div>;
 
   return (
@@ -44,6 +46,7 @@ export default function Home() {
 
   return (
     <>
+      {/* CORRECCIÓN 2: Inyección de CSS segura para Vercel */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 600px) {
           .footer-container {
@@ -80,7 +83,8 @@ export default function Home() {
           }}>
 
             <div 
-              onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+              // CORRECCIÓN 3: Scroll seguro
+              onClick={() => typeof window !== 'undefined' && window.scrollTo({top: 0, behavior: 'smooth'})}
               style={{ 
                 flex: '1 1 auto', 
                 display: 'flex', 
@@ -90,7 +94,7 @@ export default function Home() {
             >
               <img 
                 src="/Logocompleto.png" 
-                alt="Green Landscaping & Irrigation LLC" 
+                alt="Green Landscaping and Irrigation LLC" 
                 style={{ 
                   height: 'auto',
                   width: 'clamp(180px, 25vw, 280px)',
@@ -213,7 +217,7 @@ export default function Home() {
         </section>
 
         <div style={{ textAlign: 'center', padding: '25px 10px', color: '#6B7280', fontSize: 'clamp(11px, 2vw, 14px)', letterSpacing: '1px', fontWeight: 'bold' }}>
-          <span style={{ color: '#FFB703' }}>★★★★★</span> PROFESSIONAL IRRIGATION & SOD SERVICES
+          <span style={{ color: '#FFB703' }}>★★★★★</span> 5-STAR GOOGLE RATING • PROFESSIONAL IRRIGATION & SOD
         </div>
 
         <section id="estimate-section" style={{ padding: 'clamp(40px, 8vw, 80px) 20px', backgroundColor: '#FFFFFF' }}>
@@ -282,44 +286,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <section style={{ padding: '80px 20px', backgroundColor: '#FFFFFF' }}>
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ textAlign: 'center', fontSize: 'clamp(30px, 5vw, 42px)', color: '#0B2219', fontWeight: '900', marginBottom: '15px' }}>Customer Opinions</h2>
-            <p style={{ textAlign: 'center', color: '#6B7280', marginBottom: '40px', fontSize: '17px' }}>Your feedback helps us grow. Share your experience with us!</p>
-
-            <div style={{ 
-              backgroundColor: '#0B2219', 
-              padding: '40px', 
-              borderRadius: '40px', 
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)' 
-            }}>
-              <h3 style={{ color: '#FFFFFF', textAlign: 'center', fontSize: '24px', fontWeight: '900', marginBottom: '25px' }}>Leave a Review</h3>
-              <form action="https://formspree.io/f/xeevogog" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <input type="hidden" name="_subject" value="New Service Review Submission" />
-                <input type="text" name="reviewer_name" placeholder="Your Name" required style={inputStyle} />
-                
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                  <label style={{ color: '#FFFFFF', fontWeight: 'bold' }}>Rating:</label>
-                  <select name="rating" style={{ ...inputStyle, padding: '10px' }}>
-                    <option value="5">5 Stars ★★★★★</option>
-                    <option value="4">4 Stars ★★★★</option>
-                    <option value="3">3 Stars ★★★</option>
-                    <option value="2">2 Stars ★★</option>
-                    <option value="1">1 Star ★</option>
-                  </select>
-                </div>
-
-                <textarea name="review_text" placeholder="Tell others what you thought of our work..." rows="3" required style={inputStyle}></textarea>
-                
-                <button type="submit" style={{ ...submitButtonStyle, backgroundColor: '#FFB703', color: '#0B2219', marginTop: '10px' }}>
-                  POST REVIEW
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
-
       </main>
 
       <footer style={{ 
@@ -374,8 +340,8 @@ export default function Home() {
 
               <div style={{ minWidth: '150px' }}>
                 <h4 style={{ color: '#FFB703', margin: '0', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Email</h4>
-                <a href="mailto:info@greenlandgl.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
-                  info@greenlandgl.com
+                <a href="mailto:usalandgl@gmail.com" style={{ color: '#FFFFFF', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
+                  usalandgl@gmail.com
                 </a>
               </div>
 
@@ -397,6 +363,7 @@ export default function Home() {
   );
 }
 
+// --- ESTILOS ---
 const inputStyle = {
   padding: '15px',
   borderRadius: '12px',
